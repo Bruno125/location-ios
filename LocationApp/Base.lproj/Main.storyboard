@@ -23,7 +23,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xd0-Ts-LYI">
                                 <rect key="frame" x="0.0" y="369" width="375" height="298"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="298" id="ign-Ct-zar"/>
                                 </constraints>
@@ -67,8 +67,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Location App" id="auD-Ki-e2X">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="sZi-kg-pUf"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="0lU-5s-UfN"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_filter" id="sZi-kg-pUf"/>
+                        <barButtonItem key="rightBarButtonItem" image="icon_location" id="0lU-5s-UfN"/>
                     </navigationItem>
                     <connections>
                         <outlet property="barToTableTopConstraint" destination="jSv-9f-tba" id="hBW-Ol-5FL"/>
@@ -98,4 +98,8 @@
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_filter" width="22" height="22"/>
+        <image name="icon_location" width="22" height="22"/>
+    </resources>
 </document>
