@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var barToTableTopConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        actionTest(mapView)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func actionTest(_ sender: Any) {
+        barToTableTopConstraint.priority = barToTableTopConstraint.priority > 500 ? 250 : 900
+        UIView.animate(withDuration: 0.5){
+            self.view.layoutIfNeeded()
+        }
+        
     }
-
+    
+    
 
 }
 
