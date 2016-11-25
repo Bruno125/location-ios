@@ -33,16 +33,17 @@
                                 <items>
                                     <barButtonItem style="plain" id="qHv-Cd-aMh">
                                         <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="6rU-U7-Ynk">
-                                            <rect key="frame" x="16" y="7" width="200" height="30"/>
+                                            <rect key="frame" x="16" y="7" width="0.0" height="30"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         </textField>
                                     </barButtonItem>
-                                    <barButtonItem title="Item" id="jDb-B7-KPu">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sUy-Ju-XbJ"/>
+                                    <barButtonItem title="Search" id="jDb-B7-KPu">
                                         <connections>
-                                            <action selector="actionTest:" destination="BYZ-38-t0r" id="7mc-Rz-kWA"/>
+                                            <action selector="actionSearch:" destination="BYZ-38-t0r" id="tAN-B3-lOJ"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -67,12 +68,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Location App" id="auD-Ki-e2X">
-                        <barButtonItem key="leftBarButtonItem" image="icon_filter" id="sZi-kg-pUf"/>
-                        <barButtonItem key="rightBarButtonItem" image="icon_location" id="0lU-5s-UfN"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_filter" id="sZi-kg-pUf">
+                            <connections>
+                                <action selector="actionFilter:" destination="BYZ-38-t0r" id="tj5-d0-702"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_location" id="0lU-5s-UfN">
+                            <connections>
+                                <action selector="actionLocation:" destination="BYZ-38-t0r" id="8hu-6e-GNY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="barToTableTopConstraint" destination="jSv-9f-tba" id="hBW-Ol-5FL"/>
+                        <outlet property="bottomToolbar" destination="hhP-Z1-8XW" id="urd-vs-lkK"/>
                         <outlet property="mapView" destination="3WM-Bq-JVB" id="jZu-53-u7A"/>
+                        <outlet property="searchButton" destination="jDb-B7-KPu" id="1EU-VR-0lU"/>
+                        <outlet property="searchTextField" destination="6rU-U7-Ynk" id="irA-9P-LUk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
