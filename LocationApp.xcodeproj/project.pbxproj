@@ -13,6 +13,16 @@
 		39BDE6751DE7909300FB4C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6741DE7909300FB4C7D /* Assets.xcassets */; };
 		39BDE6781DE7909300FB4C7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6761DE7909300FB4C7D /* LaunchScreen.storyboard */; };
 		39BDE6831DE7909400FB4C7D /* LocationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDE6821DE7909400FB4C7D /* LocationAppTests.swift */; };
+		39C30F141DEB89F700B518C8 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F131DEB89F700B518C8 /* Place.swift */; };
+		39C30F151DEB89F700B518C8 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F131DEB89F700B518C8 /* Place.swift */; };
+		39C30F1B1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F1A1DEB8ACA00B518C8 /* PlaceRepo.swift */; };
+		39C30F1C1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F1A1DEB8ACA00B518C8 /* PlaceRepo.swift */; };
+		39C30F1E1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F1D1DEB8B0E00B518C8 /* PlaceTypes.swift */; };
+		39C30F1F1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F1D1DEB8B0E00B518C8 /* PlaceTypes.swift */; };
+		39C30F211DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F201DEB8C6700B518C8 /* PlaceServiceRepo.swift */; };
+		39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F201DEB8C6700B518C8 /* PlaceServiceRepo.swift */; };
+		39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */; };
+		39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */; };
 		B8CAEEA9736E2D829B8B6BB5 /* Pods_LocationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4255D62DEB3D6A7D919C4A9C /* Pods_LocationApp.framework */; };
 		BC956619B0396DB0526420C9 /* Pods_LocationAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C7A7DDFB7B74D4A93A8635 /* Pods_LocationAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +51,11 @@
 		39BDE67E1DE7909400FB4C7D /* LocationAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BDE6821DE7909400FB4C7D /* LocationAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAppTests.swift; sourceTree = "<group>"; };
 		39BDE6841DE7909400FB4C7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39C30F131DEB89F700B518C8 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Place.swift; path = Data/Model/Place.swift; sourceTree = "<group>"; };
+		39C30F1A1DEB8ACA00B518C8 /* PlaceRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceRepo.swift; path = Data/Source/PlaceRepo.swift; sourceTree = "<group>"; };
+		39C30F1D1DEB8B0E00B518C8 /* PlaceTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTypes.swift; path = Data/Model/PlaceTypes.swift; sourceTree = "<group>"; };
+		39C30F201DEB8C6700B518C8 /* PlaceServiceRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceServiceRepo.swift; path = Data/Source/PlaceServiceRepo.swift; sourceTree = "<group>"; };
+		39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceFileSource.swift; path = Data/Source/PlaceFileSource.swift; sourceTree = "<group>"; };
 		4255D62DEB3D6A7D919C4A9C /* Pods_LocationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C7A7DDFB7B74D4A93A8635 /* Pods_LocationAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBF54E8179094F22A8DCD6D /* Pods-LocationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocationApp/Pods-LocationApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +104,9 @@
 		39BDE66C1DE7909300FB4C7D /* LocationApp */ = {
 			isa = PBXGroup;
 			children = (
+				39C30F101DEB896800B518C8 /* Utils */,
+				39C30F181DEB8A3D00B518C8 /* Modules */,
+				39C30F0D1DEB890900B518C8 /* Data */,
 				39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */,
 				39BDE66F1DE7909300FB4C7D /* ViewController.swift */,
 				39BDE6711DE7909300FB4C7D /* Main.storyboard */,
@@ -106,6 +124,72 @@
 				39BDE6841DE7909400FB4C7D /* Info.plist */,
 			);
 			path = LocationAppTests;
+			sourceTree = "<group>";
+		};
+		39C30F0D1DEB890900B518C8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				39C30F261DEB8CEF00B518C8 /* Assets */,
+				39C30F171DEB8A1400B518C8 /* Model */,
+				39C30F161DEB8A0D00B518C8 /* Source */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		39C30F0E1DEB891400B518C8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		39C30F0F1DEB895700B518C8 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		39C30F101DEB896800B518C8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		39C30F161DEB8A0D00B518C8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				39C30F1A1DEB8ACA00B518C8 /* PlaceRepo.swift */,
+				39C30F201DEB8C6700B518C8 /* PlaceServiceRepo.swift */,
+				39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		39C30F171DEB8A1400B518C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39C30F131DEB89F700B518C8 /* Place.swift */,
+				39C30F1D1DEB8B0E00B518C8 /* PlaceTypes.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		39C30F181DEB8A3D00B518C8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				39C30F0F1DEB895700B518C8 /* Detail */,
+				39C30F0E1DEB891400B518C8 /* Search */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		39C30F261DEB8CEF00B518C8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		9714E752C2D957902363E848 /* Frameworks */ = {
@@ -330,6 +414,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C30F1E1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
+				39C30F141DEB89F700B518C8 /* Place.swift in Sources */,
+				39C30F1B1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,
+				39C30F211DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
+				39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
 				39BDE6701DE7909300FB4C7D /* ViewController.swift in Sources */,
 				39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */,
 			);
@@ -340,6 +429,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BDE6831DE7909400FB4C7D /* LocationAppTests.swift in Sources */,
+				39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
+				39C30F1F1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
+				39C30F151DEB89F700B518C8 /* Place.swift in Sources */,
+				39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
+				39C30F1C1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +635,7 @@
 				39BDE6891DE7909400FB4C7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39BDE68A1DE7909400FB4C7D /* Build configuration list for PBXNativeTarget "LocationAppTests" */ = {
 			isa = XCConfigurationList;
@@ -549,6 +644,7 @@
 				39BDE68C1DE7909400FB4C7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
