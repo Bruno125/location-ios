@@ -45,8 +45,10 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>BaseURL</key>
-    <string>https://maps.googleapis.com/maps/api/place/</string>
+	</array>
+	<key>Base URL</key>
+	<string>https://maps.googleapis.com/maps/api/place</string>
+	<key>Google Api Key</key>
+	<string>AIzaSyBggpJDUZCOBpCKhkabeO5NirxVsaW5qpQ</string>
 </dict>
 </plist>
