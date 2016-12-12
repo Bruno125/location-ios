@@ -15,15 +15,15 @@ class PlaceRepository: PlaceRepo {
     
     
     func nearby(latitude: Double, longitude: Double, radius :Int, type: PlaceTypes) -> Observable<[Place]>{
-        return PlaceFileSource.sharedInstance.nearby(latitude: latitude, longitude: longitude, radius: radius, type: type)
+        return PlaceServiceRepo.sharedInstance.nearby(latitude: latitude, longitude: longitude, radius: radius, type: type)
     }
     
     func getDetails(placeId: String) -> Observable<Place> {
-        return PlaceFileSource.sharedInstance.getDetails(placeId: placeId)
+        return PlaceServiceRepo.sharedInstance.getDetails(placeId: placeId)
     }
     
     func getPhotos(referenceNumber: String) -> Observable<[String]> {
-        return PlaceFileSource.sharedInstance.getPhotos(referenceNumber: referenceNumber)
+        return PlaceServiceRepo.sharedInstance.getPhotos(referenceNumber: referenceNumber)
     }
     
 }
