@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        _ = PlaceRepository.sharedInstance.search("restaurant", type: .restaurant)
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -23,6 +23,12 @@
 		39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F201DEB8C6700B518C8 /* PlaceServiceRepo.swift */; };
 		39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */; };
 		39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */; };
+		39C30F291DF3420800B518C8 /* place_detail.json in Resources */ = {isa = PBXBuildFile; fileRef = 39C30F271DF3420800B518C8 /* place_detail.json */; };
+		39C30F2A1DF3420800B518C8 /* place_detail.json in Resources */ = {isa = PBXBuildFile; fileRef = 39C30F271DF3420800B518C8 /* place_detail.json */; };
+		39C30F2B1DF3420800B518C8 /* place_search.json in Resources */ = {isa = PBXBuildFile; fileRef = 39C30F281DF3420800B518C8 /* place_search.json */; };
+		39C30F2C1DF3420800B518C8 /* place_search.json in Resources */ = {isa = PBXBuildFile; fileRef = 39C30F281DF3420800B518C8 /* place_search.json */; };
+		39C30F2E1DF3460200B518C8 /* PlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F2D1DF3460200B518C8 /* PlaceRepository.swift */; };
+		39C30F2F1DF3460200B518C8 /* PlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C30F2D1DF3460200B518C8 /* PlaceRepository.swift */; };
 		B8CAEEA9736E2D829B8B6BB5 /* Pods_LocationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4255D62DEB3D6A7D919C4A9C /* Pods_LocationApp.framework */; };
 		BC956619B0396DB0526420C9 /* Pods_LocationAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C7A7DDFB7B74D4A93A8635 /* Pods_LocationAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +62,9 @@
 		39C30F1D1DEB8B0E00B518C8 /* PlaceTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTypes.swift; path = Data/Model/PlaceTypes.swift; sourceTree = "<group>"; };
 		39C30F201DEB8C6700B518C8 /* PlaceServiceRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceServiceRepo.swift; path = Data/Source/PlaceServiceRepo.swift; sourceTree = "<group>"; };
 		39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceFileSource.swift; path = Data/Source/PlaceFileSource.swift; sourceTree = "<group>"; };
+		39C30F271DF3420800B518C8 /* place_detail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = place_detail.json; path = Data/Assets/place_detail.json; sourceTree = "<group>"; };
+		39C30F281DF3420800B518C8 /* place_search.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = place_search.json; path = Data/Assets/place_search.json; sourceTree = "<group>"; };
+		39C30F2D1DF3460200B518C8 /* PlaceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceRepository.swift; path = Data/Source/PlaceRepository.swift; sourceTree = "<group>"; };
 		4255D62DEB3D6A7D919C4A9C /* Pods_LocationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C7A7DDFB7B74D4A93A8635 /* Pods_LocationAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBF54E8179094F22A8DCD6D /* Pods-LocationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocationApp/Pods-LocationApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				39C30F1A1DEB8ACA00B518C8 /* PlaceRepo.swift */,
+				39C30F2D1DF3460200B518C8 /* PlaceRepository.swift */,
 				39C30F201DEB8C6700B518C8 /* PlaceServiceRepo.swift */,
 				39C30F231DEB8CCD00B518C8 /* PlaceFileSource.swift */,
 			);
@@ -188,6 +198,8 @@
 		39C30F261DEB8CEF00B518C8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				39C30F271DF3420800B518C8 /* place_detail.json */,
+				39C30F281DF3420800B518C8 /* place_search.json */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -301,6 +313,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C30F291DF3420800B518C8 /* place_detail.json in Resources */,
+				39C30F2B1DF3420800B518C8 /* place_search.json in Resources */,
 				39BDE6781DE7909300FB4C7D /* LaunchScreen.storyboard in Resources */,
 				39BDE6751DE7909300FB4C7D /* Assets.xcassets in Resources */,
 				39BDE6731DE7909300FB4C7D /* Main.storyboard in Resources */,
@@ -311,6 +325,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C30F2A1DF3420800B518C8 /* place_detail.json in Resources */,
+				39C30F2C1DF3420800B518C8 /* place_search.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +435,7 @@
 				39C30F1B1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,
 				39C30F211DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
 				39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
+				39C30F2E1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
 				39BDE6701DE7909300FB4C7D /* ViewController.swift in Sources */,
 				39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */,
 			);
@@ -430,6 +447,7 @@
 			files = (
 				39BDE6831DE7909400FB4C7D /* LocationAppTests.swift in Sources */,
 				39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
+				39C30F2F1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
 				39C30F1F1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
 				39C30F151DEB89F700B518C8 /* Place.swift in Sources */,
 				39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,

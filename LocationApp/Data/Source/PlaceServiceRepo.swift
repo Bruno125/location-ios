@@ -9,6 +9,10 @@
 import UIKit
 
 class PlaceServiceRepo: PlaceRepo {
+    
+    static let sharedInstance = PlaceServiceRepo()
+    private init(){}
+    
     func search(_ query: String, type: PlaceTypes) -> [Place] {
         return []
     }

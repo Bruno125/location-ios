@@ -85,18 +85,37 @@
                         <outlet property="mapView" destination="3WM-Bq-JVB" id="jZu-53-u7A"/>
                         <outlet property="searchButton" destination="jDb-B7-KPu" id="1EU-VR-0lU"/>
                         <outlet property="searchTextField" destination="6rU-U7-Ynk" id="irA-9P-LUk"/>
+                        <segue destination="kAr-c1-csg" kind="show" identifier="DetailSegue" id="Q2J-s9-cr0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1018" y="139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zib-aD-DUt">
+            <objects>
+                <viewController id="kAr-c1-csg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A2m-16-jaT"/>
+                        <viewControllerLayoutGuide type="bottom" id="4JY-IQ-FwJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Igj-0m-fhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Wz-k2-73w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1926" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cJo-EW-RX0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x6a-Cn-cgH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c5e-dt-BfY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c5e-dt-BfY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
