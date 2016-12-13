@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import RxSwift
 
 class ViewController: UIViewController {
 
@@ -18,19 +19,26 @@ class ViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var barToTableTopConstraint: NSLayoutConstraint!
     
+    private let mViewModel = MainViewModel(source: Injection.getSource())
+    private let mDisposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let obs = PlaceRepository.sharedInstance.nearby(latitude: 53.406566, longitude: -2.966531, radius: 25000, type: .none)
         
-        obs.subscribe(onNext: { places in
-            print(places.count)
-            
-        })
+        mViewModel.getPlacesStream().subscribe(onNext: { place in
+            let annotation = MKPointAnnotation()
+            let centerCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude:place.longitude)
+            annotation.coordinate = centerCoordinate
+            annotation.title = place.name
+            self.mapView.addAnnotation(annotation)
+        }).addDisposableTo(mDisposeBag)
         
+        
+        mViewModel.start()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        setupSearchTextField()
+        //setupSearchTextField()
     }
 
     // MARK: Search

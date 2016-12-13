@@ -15,6 +15,7 @@ struct Place {
     let latitude :Double
     let longitude :Double
     
+    let icon :String
     let address :String
     let phone :String
     let internationalPhone :String
@@ -38,6 +39,7 @@ struct PlaceUtils{
         let id = json["place_id"].stringValue
         let name = json["name"].stringValue
         
+        let icon = json["icon"].stringValue
         let address = json["formatted_address"].stringValue
         let phone = json["formatted_phone_number"].stringValue
         let internationalPhone = json["international_phone_number"].stringValue
@@ -54,6 +56,7 @@ struct PlaceUtils{
                      name: name,
                      latitude: latitude,
                      longitude: longitude,
+                     icon: icon,
                      address: address,
                      phone: phone,
                      internationalPhone: internationalPhone,

@@ -20,4 +20,10 @@ class AppUtils: NSObject {
         return Bundle.main.object(forInfoDictionaryKey: "Google Api Key") as! String
     }
     
+    
+    static func getRadius() -> Int{
+        return 10000 // TODO: get from preferences
+    }
+    
 }
+
