@@ -36,14 +36,14 @@ class ViewController: UIViewController {
         
         mViewModel.start()
     }
-
+    
+    // MARK: Place list sheet
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //setupSearchTextField()
         addBottomSheetView()
     }
-    
-    // MARK: Place list sheet
     
     func addBottomSheetView() {
         // 1- Init bottomSheetVC
@@ -60,45 +60,34 @@ class ViewController: UIViewController {
         bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
     
-
-    // MARK: Search
-    
-    @IBAction func actionSearch(_ sender: Any) {
-        hideOrShowTableView()
-    }
-    
-    func setupSearchTextField(){
-        UIView.animate(withDuration: 0.5){
-            let toolbarWidth = self.bottomToolbar.frame.width
-            //Calculate search button size
-            var searchSize = 0
-            if let searchFrame = (self.searchButton.value(forKey: "view") as? UIView)?.frame{
-                searchSize = Int(toolbarWidth) - Int(searchFrame.origin.x)
-            }
-            //Set frame to fit available space on toolbar
-            var frame = self.searchTextField.frame
-            frame.size.width = toolbarWidth - CGFloat(searchSize + 16) - frame.origin.x
-            self.searchTextField.frame = frame
-        }
-    }
-    
-    func hideOrShowTableView() {
-        barToTableTopConstraint.priority = barToTableTopConstraint.priority > 500 ? 250 : 900
-        UIView.animate(withDuration: 0.5){
-            self.view.layoutIfNeeded()
-        }
-    }
-    
     // MARK: Location
     
-    
     @IBAction func actionLocation(_ sender: Any) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Current location", style: .default, handler: { a in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Pick location on map", style: .default, handler: { a in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "By postcode", style: .default, handler: { a in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { a in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func actionFilter(_ sender: Any) {
-    }
     
     
+    
+    // MARK: Settings
+    
+    
+    @IBOutlet var actionSettings: UIButton!
 
 }
 

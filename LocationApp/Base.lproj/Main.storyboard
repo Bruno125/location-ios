@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Location App-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LocationApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,6 +40,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbd-MM-Yqk">
                                         <rect key="frame" x="0.0" y="40" width="40" height="40"/>
                                         <state key="normal" image="icon_gps"/>
+                                        <connections>
+                                            <action selector="actionLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nOf-S3-Hh7"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-qb-SNv">
                                         <rect key="frame" x="0.0" y="39" width="40" height="1"/>
@@ -90,19 +93,8 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3WM-Bq-JVB" secondAttribute="bottom" id="zk6-7f-Nkq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Location App" id="auD-Ki-e2X">
-                        <barButtonItem key="leftBarButtonItem" image="icon_filter" id="sZi-kg-pUf">
-                            <connections>
-                                <action selector="actionFilter:" destination="BYZ-38-t0r" id="tj5-d0-702"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icon_location" id="0lU-5s-UfN">
-                            <connections>
-                                <action selector="actionLocation:" destination="BYZ-38-t0r" id="8hu-6e-GNY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
+                        <outlet property="actionSettings" destination="7bQ-Qm-wH6" id="rCk-04-LpY"/>
                         <outlet property="mapView" destination="3WM-Bq-JVB" id="jZu-53-u7A"/>
                     </connections>
                 </viewController>
@@ -228,9 +220,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_filter" width="22" height="22"/>
         <image name="icon_gps" width="22" height="22"/>
-        <image name="icon_location" width="22" height="22"/>
         <image name="icon_settings" width="22" height="22"/>
     </resources>
 </document>

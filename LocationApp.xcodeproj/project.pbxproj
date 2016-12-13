@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		392948C51DFEFC1100D968E6 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C41DFEFC1100D968E6 /* AppUtils.swift */; };
 		392948C61DFEFC1100D968E6 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C41DFEFC1100D968E6 /* AppUtils.swift */; };
-		392948C81DFF12C800D968E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C71DFF12C800D968E6 /* ViewController.swift */; };
-		392948C91DFF12C800D968E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C71DFF12C800D968E6 /* ViewController.swift */; };
 		392948CB1DFF16D600D968E6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948CA1DFF16D600D968E6 /* MainViewModel.swift */; };
 		392948CC1DFF16D600D968E6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948CA1DFF16D600D968E6 /* MainViewModel.swift */; };
 		392948CE1DFF198B00D968E6 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948CD1DFF198B00D968E6 /* LocationUtils.swift */; };
@@ -19,6 +17,10 @@
 		392948D31DFF313700D968E6 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D11DFF313700D968E6 /* Injection.swift */; };
 		392948D61E00277500D968E6 /* ListPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D51E00277500D968E6 /* ListPlacesViewController.swift */; };
 		392948D71E00277500D968E6 /* ListPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D51E00277500D968E6 /* ListPlacesViewController.swift */; };
+		392948D91E00AF8500D968E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D81E00AF8500D968E6 /* ViewController.swift */; };
+		392948DA1E00AF8500D968E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D81E00AF8500D968E6 /* ViewController.swift */; };
+		392948DC1E00B2B300D968E6 /* AshtonBuilding.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 392948DB1E00B2B300D968E6 /* AshtonBuilding.gpx */; };
+		392948DD1E00B2B300D968E6 /* AshtonBuilding.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 392948DB1E00B2B300D968E6 /* AshtonBuilding.gpx */; };
 		39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */; };
 		39BDE6731DE7909300FB4C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6711DE7909300FB4C7D /* Main.storyboard */; };
 		39BDE6751DE7909300FB4C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6741DE7909300FB4C7D /* Assets.xcassets */; };
@@ -59,11 +61,12 @@
 		250865F116DBD77D7BA5B683 /* Pods-LocationAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocationAppTests/Pods-LocationAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B98A184BC87A4637658C555 /* Pods-LocationAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocationAppTests/Pods-LocationAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		392948C41DFEFC1100D968E6 /* AppUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUtils.swift; path = Utils/AppUtils.swift; sourceTree = "<group>"; };
-		392948C71DFF12C800D968E6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Modules/Main/ViewController.swift; sourceTree = "<group>"; };
 		392948CA1DFF16D600D968E6 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = Modules/Main/MainViewModel.swift; sourceTree = "<group>"; };
 		392948CD1DFF198B00D968E6 /* LocationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationUtils.swift; path = Utils/LocationUtils.swift; sourceTree = "<group>"; };
 		392948D11DFF313700D968E6 /* Injection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Injection.swift; path = Injection/Injection.swift; sourceTree = "<group>"; };
 		392948D51E00277500D968E6 /* ListPlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListPlacesViewController.swift; path = "Modules/Places list/ListPlacesViewController.swift"; sourceTree = "<group>"; };
+		392948D81E00AF8500D968E6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Modules/Main/ViewController.swift; sourceTree = "<group>"; };
+		392948DB1E00B2B300D968E6 /* AshtonBuilding.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AshtonBuilding.gpx; path = Data/Assets/AshtonBuilding.gpx; sourceTree = "<group>"; };
 		39BDE66A1DE7909300FB4C7D /* LocationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39BDE6721DE7909300FB4C7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -180,7 +183,7 @@
 		39C30F0E1DEB891400B518C8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				392948C71DFF12C800D968E6 /* ViewController.swift */,
+				392948D81E00AF8500D968E6 /* ViewController.swift */,
 				392948CA1DFF16D600D968E6 /* MainViewModel.swift */,
 			);
 			name = Main;
@@ -235,6 +238,7 @@
 		39C30F261DEB8CEF00B518C8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				392948DB1E00B2B300D968E6 /* AshtonBuilding.gpx */,
 				39C30F271DF3420800B518C8 /* place_detail.json */,
 				39C30F281DF3420800B518C8 /* place_search.json */,
 			);
@@ -350,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392948DC1E00B2B300D968E6 /* AshtonBuilding.gpx in Resources */,
 				39C30F291DF3420800B518C8 /* place_detail.json in Resources */,
 				39C30F2B1DF3420800B518C8 /* place_search.json in Resources */,
 				39BDE6781DE7909300FB4C7D /* LaunchScreen.storyboard in Resources */,
@@ -362,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392948DD1E00B2B300D968E6 /* AshtonBuilding.gpx in Resources */,
 				39C30F2A1DF3420800B518C8 /* place_detail.json in Resources */,
 				39C30F2C1DF3420800B518C8 /* place_search.json in Resources */,
 			);
@@ -467,7 +473,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				392948C81DFF12C800D968E6 /* ViewController.swift in Sources */,
 				392948C51DFEFC1100D968E6 /* AppUtils.swift in Sources */,
 				39C30F1E1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
 				39C30F141DEB89F700B518C8 /* Place.swift in Sources */,
@@ -476,6 +481,7 @@
 				392948CB1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39C30F211DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
 				39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
+				392948D91E00AF8500D968E6 /* ViewController.swift in Sources */,
 				392948CE1DFF198B00D968E6 /* LocationUtils.swift in Sources */,
 				392948D21DFF313700D968E6 /* Injection.swift in Sources */,
 				39C30F2E1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
@@ -490,12 +496,12 @@
 				39BDE6831DE7909400FB4C7D /* LocationAppTests.swift in Sources */,
 				39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
 				39C30F2F1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
-				392948C91DFF12C800D968E6 /* ViewController.swift in Sources */,
 				392948D71E00277500D968E6 /* ListPlacesViewController.swift in Sources */,
 				392948C61DFEFC1100D968E6 /* AppUtils.swift in Sources */,
 				392948CC1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39C30F1F1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
 				39C30F151DEB89F700B518C8 /* Place.swift in Sources */,
+				392948DA1E00AF8500D968E6 /* ViewController.swift in Sources */,
 				392948CF1DFF198B00D968E6 /* LocationUtils.swift in Sources */,
 				392948D31DFF313700D968E6 /* Injection.swift in Sources */,
 				39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
