@@ -17,6 +17,8 @@
 		392948CF1DFF198B00D968E6 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948CD1DFF198B00D968E6 /* LocationUtils.swift */; };
 		392948D21DFF313700D968E6 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D11DFF313700D968E6 /* Injection.swift */; };
 		392948D31DFF313700D968E6 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D11DFF313700D968E6 /* Injection.swift */; };
+		392948D61E00277500D968E6 /* ListPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D51E00277500D968E6 /* ListPlacesViewController.swift */; };
+		392948D71E00277500D968E6 /* ListPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948D51E00277500D968E6 /* ListPlacesViewController.swift */; };
 		39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */; };
 		39BDE6731DE7909300FB4C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6711DE7909300FB4C7D /* Main.storyboard */; };
 		39BDE6751DE7909300FB4C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6741DE7909300FB4C7D /* Assets.xcassets */; };
@@ -61,6 +63,7 @@
 		392948CA1DFF16D600D968E6 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = Modules/Main/MainViewModel.swift; sourceTree = "<group>"; };
 		392948CD1DFF198B00D968E6 /* LocationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationUtils.swift; path = Utils/LocationUtils.swift; sourceTree = "<group>"; };
 		392948D11DFF313700D968E6 /* Injection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Injection.swift; path = Injection/Injection.swift; sourceTree = "<group>"; };
+		392948D51E00277500D968E6 /* ListPlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListPlacesViewController.swift; path = "Modules/Places list/ListPlacesViewController.swift"; sourceTree = "<group>"; };
 		39BDE66A1DE7909300FB4C7D /* LocationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39BDE6721DE7909300FB4C7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,6 +112,14 @@
 				392948D11DFF313700D968E6 /* Injection.swift */,
 			);
 			name = Injection;
+			sourceTree = "<group>";
+		};
+		392948D41E00275800D968E6 /* Places list */ = {
+			isa = PBXGroup;
+			children = (
+				392948D51E00277500D968E6 /* ListPlacesViewController.swift */,
+			);
+			name = "Places list";
 			sourceTree = "<group>";
 		};
 		39BDE6611DE7909300FB4C7D = {
@@ -214,6 +225,7 @@
 		39C30F181DEB8A3D00B518C8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				392948D41E00275800D968E6 /* Places list */,
 				39C30F0F1DEB895700B518C8 /* Detail */,
 				39C30F0E1DEB891400B518C8 /* Main */,
 			);
@@ -459,6 +471,7 @@
 				392948C51DFEFC1100D968E6 /* AppUtils.swift in Sources */,
 				39C30F1E1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
 				39C30F141DEB89F700B518C8 /* Place.swift in Sources */,
+				392948D61E00277500D968E6 /* ListPlacesViewController.swift in Sources */,
 				39C30F1B1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,
 				392948CB1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39C30F211DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
@@ -478,6 +491,7 @@
 				39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
 				39C30F2F1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
 				392948C91DFF12C800D968E6 /* ViewController.swift in Sources */,
+				392948D71E00277500D968E6 /* ListPlacesViewController.swift in Sources */,
 				392948C61DFEFC1100D968E6 /* AppUtils.swift in Sources */,
 				392948CC1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39C30F1F1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,

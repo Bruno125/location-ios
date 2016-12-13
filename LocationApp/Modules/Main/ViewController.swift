@@ -38,8 +38,28 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         //setupSearchTextField()
+        addBottomSheetView()
     }
+    
+    // MARK: Place list sheet
+    
+    func addBottomSheetView() {
+        // 1- Init bottomSheetVC
+        let bottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "List Places") as! ListPlacesViewController
+        
+        // 2- Add bottomSheetVC as a child view
+        self.addChildViewController(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParentViewController: self)
+        
+        // 3- Adjust bottomSheet frame and initial position.
+        let height = UIScreen.main.bounds.height
+        let width  = UIScreen.main.bounds.width
+        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+    }
+    
 
     // MARK: Search
     
