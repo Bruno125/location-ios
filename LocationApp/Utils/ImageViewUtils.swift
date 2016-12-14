@@ -12,6 +12,16 @@ class ImageViewUtils: NSObject {
 
 }
 
+extension UIView {
+    func snapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result!
+    }
+}
+
 extension UIImageView {
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         contentMode = mode
@@ -30,5 +40,16 @@ extension UIImageView {
     func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloadedFrom(url: url, contentMode: mode)
+    }
+}
+
+extension UIImageView {
+    var colorPattern:String {
+        get {
+            return ""  // Not useful here.
+        }
+        set {
+            self.backgroundColor = UIColor(patternImage: UIImage(named:newValue)!)
+        }
     }
 }

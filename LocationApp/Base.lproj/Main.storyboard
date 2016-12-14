@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OIF-am-KzK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,10 +11,53 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="btT-qf-UnR">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="OIF-am-KzK" customClass="SplashViewController" customModule="LocationApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ECd-oK-fah"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tcg-ch-0RA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LXg-AH-iLB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_background" translatesAutoresizingMaskIntoConstraints="NO" id="Dw3-9w-m9I">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_icon_clear" translatesAutoresizingMaskIntoConstraints="NO" id="qeL-gp-xN3">
+                                <rect key="frame" x="166" y="312" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="2eS-xT-dQq"/>
+                                    <constraint firstAttribute="width" secondItem="qeL-gp-xN3" secondAttribute="height" multiplier="1:1" id="IAi-07-BED"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qeL-gp-xN3" firstAttribute="centerY" secondItem="LXg-AH-iLB" secondAttribute="centerY" id="51h-Zh-Ujt"/>
+                            <constraint firstItem="qeL-gp-xN3" firstAttribute="width" secondItem="qeL-gp-xN3" secondAttribute="height" multiplier="1:1" id="EtI-Ch-wBA"/>
+                            <constraint firstItem="Dw3-9w-m9I" firstAttribute="top" secondItem="LXg-AH-iLB" secondAttribute="top" id="HcJ-rU-IfQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Dw3-9w-m9I" secondAttribute="trailing" id="Hpb-aO-veg"/>
+                            <constraint firstItem="Tcg-ch-0RA" firstAttribute="top" secondItem="Dw3-9w-m9I" secondAttribute="bottom" id="LYC-cu-ggm"/>
+                            <constraint firstItem="qeL-gp-xN3" firstAttribute="centerX" secondItem="LXg-AH-iLB" secondAttribute="centerX" id="cBV-qh-SbI"/>
+                            <constraint firstItem="Dw3-9w-m9I" firstAttribute="leading" secondItem="LXg-AH-iLB" secondAttribute="leading" id="kfD-m0-NqS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="iconImageView" destination="qeL-gp-xN3" id="rxx-DW-75l"/>
+                        <outlet property="iconWidthConstraint" destination="2eS-xT-dQq" id="Tpb-yP-j6u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kci-LL-lsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="139"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LocationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="LocationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -39,6 +82,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbd-MM-Yqk">
                                         <rect key="frame" x="0.0" y="40" width="40" height="40"/>
+                                        <color key="tintColor" red="0.11372549019607843" green="0.54117647058823526" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="icon_gps"/>
                                         <connections>
                                             <action selector="actionLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nOf-S3-Hh7"/>
@@ -114,7 +158,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAI-VQ-rX7">
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAI-VQ-rX7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -236,24 +280,11 @@
             </objects>
             <point key="canvasLocation" x="1016.8" y="828.93553223388312"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cJo-EW-RX0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x6a-Cn-cgH" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c5e-dt-BfY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5sN-2W-MLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="app_icon_clear" width="175" height="175"/>
         <image name="icon_gps" width="22" height="22"/>
         <image name="icon_settings" width="22" height="22"/>
+        <image name="map_background" width="1024" height="768"/>
     </resources>
 </document>

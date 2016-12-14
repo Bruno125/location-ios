@@ -27,3 +27,12 @@ class AppUtils: NSObject {
     
 }
 
+extension UIViewController {
+    func delay(time: Double, closure:@escaping ()->()) {
+        let when = DispatchTime.now() + time
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            closure()
+        }
+        
+    }
+}

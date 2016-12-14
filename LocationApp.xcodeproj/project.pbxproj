@@ -25,6 +25,8 @@
 		392948E01E00BDE200D968E6 /* ImageViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948DE1E00BDE200D968E6 /* ImageViewUtils.swift */; };
 		392948E21E00BE0A00D968E6 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E11E00BE0A00D968E6 /* PlaceTableViewCell.swift */; };
 		392948E31E00BE0A00D968E6 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E11E00BE0A00D968E6 /* PlaceTableViewCell.swift */; };
+		392948E61E016AE400D968E6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E51E016AE400D968E6 /* SplashViewController.swift */; };
+		392948E71E016AE400D968E6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E51E016AE400D968E6 /* SplashViewController.swift */; };
 		39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */; };
 		39BDE6731DE7909300FB4C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6711DE7909300FB4C7D /* Main.storyboard */; };
 		39BDE6751DE7909300FB4C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6741DE7909300FB4C7D /* Assets.xcassets */; };
@@ -73,6 +75,7 @@
 		392948DB1E00B2B300D968E6 /* AshtonBuilding.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AshtonBuilding.gpx; path = Data/Assets/AshtonBuilding.gpx; sourceTree = "<group>"; };
 		392948DE1E00BDE200D968E6 /* ImageViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewUtils.swift; path = Utils/ImageViewUtils.swift; sourceTree = "<group>"; };
 		392948E11E00BE0A00D968E6 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTableViewCell.swift; path = "Modules/Places list/PlaceTableViewCell.swift"; sourceTree = "<group>"; };
+		392948E51E016AE400D968E6 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = Modules/Splash/SplashViewController.swift; sourceTree = "<group>"; };
 		39BDE66A1DE7909300FB4C7D /* LocationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39BDE6721DE7909300FB4C7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +133,14 @@
 				392948E11E00BE0A00D968E6 /* PlaceTableViewCell.swift */,
 			);
 			name = "Places list";
+			sourceTree = "<group>";
+		};
+		392948E41E016ACB00D968E6 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				392948E51E016AE400D968E6 /* SplashViewController.swift */,
+			);
+			name = Splash;
 			sourceTree = "<group>";
 		};
 		39BDE6611DE7909300FB4C7D = {
@@ -236,6 +247,7 @@
 		39C30F181DEB8A3D00B518C8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				392948E41E016ACB00D968E6 /* Splash */,
 				392948D41E00275800D968E6 /* Places list */,
 				39C30F0F1DEB895700B518C8 /* Detail */,
 				39C30F0E1DEB891400B518C8 /* Main */,
@@ -496,6 +508,7 @@
 				39C30F2E1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
 				39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */,
 				392948E21E00BE0A00D968E6 /* PlaceTableViewCell.swift in Sources */,
+				392948E61E016AE400D968E6 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +531,7 @@
 				39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
 				39C30F1C1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,
 				392948E31E00BE0A00D968E6 /* PlaceTableViewCell.swift in Sources */,
+				392948E71E016AE400D968E6 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
