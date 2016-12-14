@@ -83,6 +83,10 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
         
         cellTypes.append((.directions,0))
         
+        if !place.photoUrls.isEmpty{
+            cellTypes.append((.photos,0))
+        }
+        
         if !place.name.isEmpty{
             cellTypes.append((.address,0))
         }
@@ -91,10 +95,6 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
         }
         if !place.website.isEmpty{
             cellTypes.append((.website,0))
-        }
-        
-        if !place.photoUrls.isEmpty{
-            cellTypes.append((.photos,0))
         }
         
         if !place.reviews.isEmpty {
@@ -131,7 +131,9 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
         case .directions:
             cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath)
         case .photos:
-            cell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath)
+            let tempCell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath) as! PhotoTableViewCell
+            tempCell.set(photos: place!.photoUrls)
+            cell = tempCell
         case .commentsHeader:
             cell = tableView.dequeueReusableCell(withIdentifier: "CommentHeaderCell", for: indexPath)
         case .comments:

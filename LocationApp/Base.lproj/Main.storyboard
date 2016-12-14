@@ -286,48 +286,65 @@
                                             <outlet property="directionsButton" destination="FFY-eK-Jm0" id="xNN-Kb-cLP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhotosCell" rowHeight="102" id="Ogx-I3-FaC">
-                                        <rect key="frame" x="0.0" y="238" width="375" height="102"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhotosCell" rowHeight="96" id="Ogx-I3-FaC" customClass="PhotoTableViewCell" customModule="LocationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="238" width="375" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ogx-I3-FaC" id="5Ol-BN-cPi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GOu-g0-XW1">
-                                                    <rect key="frame" x="8" y="8" width="359" height="86"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GOu-g0-XW1">
+                                                    <rect key="frame" x="8" y="8" width="359" height="80"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="86" id="h44-wZ-0vy"/>
+                                                        <constraint firstAttribute="height" constant="80" id="h44-wZ-0vy"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vNh-yc-BxX">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vNh-yc-BxX">
                                                         <size key="itemSize" width="80" height="80"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionCell" id="G6t-Qp-vl1">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionCell" id="G6t-Qp-vl1" customClass="PhotoItemCollectionViewCell" customModule="LocationApp" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DG9-tF-Llr">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                    </imageView>
+                                                                </subviews>
                                                             </view>
+                                                            <constraints>
+                                                                <constraint firstItem="DG9-tF-Llr" firstAttribute="top" secondItem="G6t-Qp-vl1" secondAttribute="top" id="LKu-iw-I9x"/>
+                                                                <constraint firstAttribute="trailing" secondItem="DG9-tF-Llr" secondAttribute="trailing" id="dWe-Cj-a2c"/>
+                                                                <constraint firstAttribute="bottom" secondItem="DG9-tF-Llr" secondAttribute="bottom" id="pcj-2F-R7S"/>
+                                                                <constraint firstItem="DG9-tF-Llr" firstAttribute="leading" secondItem="G6t-Qp-vl1" secondAttribute="leading" id="wIk-lB-Zfe"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="photoImageView" destination="DG9-tF-Llr" id="R3H-8c-vkb"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="GOu-g0-XW1" firstAttribute="leading" secondItem="5Ol-BN-cPi" secondAttribute="leading" constant="8" id="1yo-Pk-NOE"/>
+                                                <constraint firstItem="GOu-g0-XW1" firstAttribute="bottom" secondItem="5Ol-BN-cPi" secondAttribute="bottomMargin" id="2eE-az-6C3"/>
                                                 <constraint firstAttribute="trailing" secondItem="GOu-g0-XW1" secondAttribute="trailing" constant="8" id="P3G-Es-gu2"/>
                                                 <constraint firstItem="GOu-g0-XW1" firstAttribute="top" secondItem="5Ol-BN-cPi" secondAttribute="top" constant="8" id="ZcT-uh-q1P"/>
-                                                <constraint firstAttribute="bottom" secondItem="GOu-g0-XW1" secondAttribute="bottom" constant="8" id="hcR-Xg-Tak"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="collectionView" destination="GOu-g0-XW1" id="qs3-bb-s1h"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentHeaderCell" rowHeight="51" id="V7J-3c-ope">
-                                        <rect key="frame" x="0.0" y="340" width="375" height="51"/>
+                                        <rect key="frame" x="0.0" y="334" width="375" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V7J-3c-ope" id="Leq-It-2Dg">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
@@ -360,7 +377,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="54" id="Eg0-yd-bQY" customClass="CommentTableViewCell" customModule="LocationApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="391" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="385" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eg0-yd-bQY" id="qrb-Ta-hr1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>

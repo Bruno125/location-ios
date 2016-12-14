@@ -17,6 +17,10 @@
 		39018B761E01CA3300AE37AC /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B741E01CA3300AE37AC /* Review.swift */; };
 		39018B781E01CC8400AE37AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B771E01CC8400AE37AC /* CommentTableViewCell.swift */; };
 		39018B791E01CC8400AE37AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B771E01CC8400AE37AC /* CommentTableViewCell.swift */; };
+		39018B7B1E01D33600AE37AC /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B7A1E01D33600AE37AC /* PhotoTableViewCell.swift */; };
+		39018B7C1E01D33600AE37AC /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B7A1E01D33600AE37AC /* PhotoTableViewCell.swift */; };
+		39018B7E1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B7D1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift */; };
+		39018B7F1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B7D1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift */; };
 		392948C51DFEFC1100D968E6 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C41DFEFC1100D968E6 /* AppUtils.swift */; };
 		392948C61DFEFC1100D968E6 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C41DFEFC1100D968E6 /* AppUtils.swift */; };
 		392948CB1DFF16D600D968E6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948CA1DFF16D600D968E6 /* MainViewModel.swift */; };
@@ -87,6 +91,8 @@
 		39018B711E01AF3200AE37AC /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewModel.swift; path = Modules/Detail/DetailViewModel.swift; sourceTree = "<group>"; };
 		39018B741E01CA3300AE37AC /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Data/Model/Review.swift; sourceTree = "<group>"; };
 		39018B771E01CC8400AE37AC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentTableViewCell.swift; path = Modules/Detail/CommentTableViewCell.swift; sourceTree = "<group>"; };
+		39018B7A1E01D33600AE37AC /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoTableViewCell.swift; path = Modules/Detail/PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		39018B7D1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoItemCollectionViewCell.swift; path = Modules/Detail/PhotoItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		392948C41DFEFC1100D968E6 /* AppUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUtils.swift; path = Utils/AppUtils.swift; sourceTree = "<group>"; };
 		392948CA1DFF16D600D968E6 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = Modules/Main/MainViewModel.swift; sourceTree = "<group>"; };
 		392948CD1DFF198B00D968E6 /* LocationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationUtils.swift; path = Utils/LocationUtils.swift; sourceTree = "<group>"; };
@@ -240,6 +246,8 @@
 				39018B6B1E01AE8F00AE37AC /* SimpleTableViewCell.swift */,
 				39018B6E1E01AEE500AE37AC /* DirectionsTableViewCell.swift */,
 				39018B771E01CC8400AE37AC /* CommentTableViewCell.swift */,
+				39018B7A1E01D33600AE37AC /* PhotoTableViewCell.swift */,
+				39018B7D1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -541,10 +549,12 @@
 				39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
 				392948D91E00AF8500D968E6 /* ViewController.swift in Sources */,
 				392948CE1DFF198B00D968E6 /* LocationUtils.swift in Sources */,
+				39018B7E1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift in Sources */,
 				39018B6C1E01AE8F00AE37AC /* SimpleTableViewCell.swift in Sources */,
 				392948EC1E01795E00D968E6 /* SheetViewController.swift in Sources */,
 				392948D21DFF313700D968E6 /* Injection.swift in Sources */,
 				39018B781E01CC8400AE37AC /* CommentTableViewCell.swift in Sources */,
+				39018B7B1E01D33600AE37AC /* PhotoTableViewCell.swift in Sources */,
 				39C30F2E1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
 				39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */,
 				392948E21E00BE0A00D968E6 /* PlaceTableViewCell.swift in Sources */,
@@ -572,10 +582,12 @@
 				39C30F151DEB89F700B518C8 /* Place.swift in Sources */,
 				392948DA1E00AF8500D968E6 /* ViewController.swift in Sources */,
 				392948CF1DFF198B00D968E6 /* LocationUtils.swift in Sources */,
+				39018B7F1E01D35400AE37AC /* PhotoItemCollectionViewCell.swift in Sources */,
 				39018B6D1E01AE8F00AE37AC /* SimpleTableViewCell.swift in Sources */,
 				392948ED1E01795E00D968E6 /* SheetViewController.swift in Sources */,
 				392948D31DFF313700D968E6 /* Injection.swift in Sources */,
 				39018B791E01CC8400AE37AC /* CommentTableViewCell.swift in Sources */,
+				39018B7C1E01D33600AE37AC /* PhotoTableViewCell.swift in Sources */,
 				39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
 				39C30F1C1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,
 				392948E31E00BE0A00D968E6 /* PlaceTableViewCell.swift in Sources */,
