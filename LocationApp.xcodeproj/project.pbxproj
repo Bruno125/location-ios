@@ -27,6 +27,12 @@
 		392948E31E00BE0A00D968E6 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E11E00BE0A00D968E6 /* PlaceTableViewCell.swift */; };
 		392948E61E016AE400D968E6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E51E016AE400D968E6 /* SplashViewController.swift */; };
 		392948E71E016AE400D968E6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E51E016AE400D968E6 /* SplashViewController.swift */; };
+		392948E91E0178CE00D968E6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E81E0178CE00D968E6 /* DetailViewController.swift */; };
+		392948EA1E0178CE00D968E6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948E81E0178CE00D968E6 /* DetailViewController.swift */; };
+		392948EC1E01795E00D968E6 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948EB1E01795E00D968E6 /* SheetViewController.swift */; };
+		392948ED1E01795E00D968E6 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948EB1E01795E00D968E6 /* SheetViewController.swift */; };
+		392948EF1E01950C00D968E6 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948EE1E01950C00D968E6 /* CustomAnnotationView.swift */; };
+		392948F01E01950C00D968E6 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948EE1E01950C00D968E6 /* CustomAnnotationView.swift */; };
 		39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */; };
 		39BDE6731DE7909300FB4C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6711DE7909300FB4C7D /* Main.storyboard */; };
 		39BDE6751DE7909300FB4C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6741DE7909300FB4C7D /* Assets.xcassets */; };
@@ -76,6 +82,9 @@
 		392948DE1E00BDE200D968E6 /* ImageViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewUtils.swift; path = Utils/ImageViewUtils.swift; sourceTree = "<group>"; };
 		392948E11E00BE0A00D968E6 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTableViewCell.swift; path = "Modules/Places list/PlaceTableViewCell.swift"; sourceTree = "<group>"; };
 		392948E51E016AE400D968E6 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = Modules/Splash/SplashViewController.swift; sourceTree = "<group>"; };
+		392948E81E0178CE00D968E6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Modules/Detail/DetailViewController.swift; sourceTree = "<group>"; };
+		392948EB1E01795E00D968E6 /* SheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SheetViewController.swift; path = Utils/SheetViewController.swift; sourceTree = "<group>"; };
+		392948EE1E01950C00D968E6 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAnnotationView.swift; path = Modules/Main/CustomAnnotationView.swift; sourceTree = "<group>"; };
 		39BDE66A1DE7909300FB4C7D /* LocationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39BDE6721DE7909300FB4C7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -203,6 +212,7 @@
 			children = (
 				392948D81E00AF8500D968E6 /* ViewController.swift */,
 				392948CA1DFF16D600D968E6 /* MainViewModel.swift */,
+				392948EE1E01950C00D968E6 /* CustomAnnotationView.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -210,6 +220,7 @@
 		39C30F0F1DEB895700B518C8 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				392948E81E0178CE00D968E6 /* DetailViewController.swift */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -220,6 +231,7 @@
 				392948C41DFEFC1100D968E6 /* AppUtils.swift */,
 				392948CD1DFF198B00D968E6 /* LocationUtils.swift */,
 				392948DE1E00BDE200D968E6 /* ImageViewUtils.swift */,
+				392948EB1E01795E00D968E6 /* SheetViewController.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -494,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				392948C51DFEFC1100D968E6 /* AppUtils.swift in Sources */,
+				392948E91E0178CE00D968E6 /* DetailViewController.swift in Sources */,
 				39C30F1E1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
 				392948DF1E00BDE200D968E6 /* ImageViewUtils.swift in Sources */,
 				39C30F141DEB89F700B518C8 /* Place.swift in Sources */,
@@ -501,9 +514,11 @@
 				39C30F1B1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,
 				392948CB1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39C30F211DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
+				392948EF1E01950C00D968E6 /* CustomAnnotationView.swift in Sources */,
 				39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
 				392948D91E00AF8500D968E6 /* ViewController.swift in Sources */,
 				392948CE1DFF198B00D968E6 /* LocationUtils.swift in Sources */,
+				392948EC1E01795E00D968E6 /* SheetViewController.swift in Sources */,
 				392948D21DFF313700D968E6 /* Injection.swift in Sources */,
 				39C30F2E1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
 				39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */,
@@ -517,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BDE6831DE7909400FB4C7D /* LocationAppTests.swift in Sources */,
+				392948EA1E0178CE00D968E6 /* DetailViewController.swift in Sources */,
 				39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
 				392948E01E00BDE200D968E6 /* ImageViewUtils.swift in Sources */,
 				39C30F2F1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
@@ -524,9 +540,11 @@
 				392948C61DFEFC1100D968E6 /* AppUtils.swift in Sources */,
 				392948CC1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39C30F1F1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
+				392948F01E01950C00D968E6 /* CustomAnnotationView.swift in Sources */,
 				39C30F151DEB89F700B518C8 /* Place.swift in Sources */,
 				392948DA1E00AF8500D968E6 /* ViewController.swift in Sources */,
 				392948CF1DFF198B00D968E6 /* LocationUtils.swift in Sources */,
+				392948ED1E01795E00D968E6 /* SheetViewController.swift in Sources */,
 				392948D31DFF313700D968E6 /* Injection.swift in Sources */,
 				39C30F251DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
 				39C30F1C1DEB8ACA00B518C8 /* PlaceRepo.swift in Sources */,

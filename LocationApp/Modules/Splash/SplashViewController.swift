@@ -32,7 +32,6 @@ class SplashViewController: UIViewController {
             self.delay(time: 0, closure: {
                 self.replaceWithController(identifier: "Main")
             })
-            
         })
     }
     
