@@ -11,10 +11,11 @@ import UIKit
 class ListPlacesViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-    
     @IBOutlet var dividerView: UIView!
     
-    let fullView: CGFloat = 100
+    var mPlaces : [Place] = []
+    
+    let fullView: CGFloat = 300
     var partialView: CGFloat {
         return UIScreen.main.bounds.height - dividerView.frame.minY
     }
@@ -25,6 +26,8 @@ class ListPlacesViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, fullView, 0); //values
+
         
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGesture))
         gesture.delegate = self
@@ -96,20 +99,34 @@ class ListPlacesViewController: UIViewController {
 
 extension ListPlacesViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func addedPlace(_ place:Place){
+        self.mPlaces.append(place)
+        //insert new row for new place
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: [IndexPath(row: mPlaces.count-1, section: 0)] , with: .automatic)
+        self.tableView.endUpdates()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return self.mPlaces.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 61
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "default")!
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "PlaceTableViewCell") as! PlaceTableViewCell
+        cell.setPlace(self.mPlaces[indexPath.row])
+        return cell
     }
 }
 

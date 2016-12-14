@@ -21,33 +21,45 @@ class ViewController: UIViewController {
     
     private let mViewModel = MainViewModel(source: Injection.getSource())
     private let mDisposeBag = DisposeBag()
+    private var mPlaces : [Place] = []
+    
+    private var listSheet : ListPlacesViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mViewModel.getPlacesStream().subscribe(onNext: { place in
-            let annotation = MKPointAnnotation()
-            let centerCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude:place.longitude)
-            annotation.coordinate = centerCoordinate
-            annotation.title = place.name
-            self.mapView.addAnnotation(annotation)
+            self.mPlaces.append(place)
+            self.addAsAnnotation(place)
+            
+            if self.listSheet != nil{
+                self.listSheet!.addedPlace(place)
+            }
+            
         }).addDisposableTo(mDisposeBag)
         
-        
         mViewModel.start()
+    }
+    
+    func addAsAnnotation(_ place :Place){
+        let annotation = MKPointAnnotation()
+        let centerCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude:place.longitude)
+        annotation.coordinate = centerCoordinate
+        annotation.title = place.name
+        self.mapView.addAnnotation(annotation)
     }
     
     // MARK: Place list sheet
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //setupSearchTextField()
         addBottomSheetView()
     }
     
     func addBottomSheetView() {
         // 1- Init bottomSheetVC
         let bottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "List Places") as! ListPlacesViewController
+        self.listSheet = bottomSheetVC
         
         // 2- Add bottomSheetVC as a child view
         self.addChildViewController(bottomSheetVC)

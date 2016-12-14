@@ -14,6 +14,7 @@ struct Place {
     let name :String
     let latitude :Double
     let longitude :Double
+    let vicinity : String
     
     let icon :String
     let address :String
@@ -38,6 +39,7 @@ struct PlaceUtils{
     static func parseDetail(from json :JSON) -> Place?{
         let id = json["place_id"].stringValue
         let name = json["name"].stringValue
+        let vicinity = json["vicinity"].stringValue
         
         let icon = json["icon"].stringValue
         let address = json["formatted_address"].stringValue
@@ -56,6 +58,7 @@ struct PlaceUtils{
                      name: name,
                      latitude: latitude,
                      longitude: longitude,
+                     vicinity: vicinity,
                      icon: icon,
                      address: address,
                      phone: phone,
