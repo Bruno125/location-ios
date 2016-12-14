@@ -20,6 +20,7 @@ struct Place {
     let address :String
     let phone :String
     let internationalPhone :String
+    let website: String
     let rating :Double
     var distance :Double
     
@@ -42,9 +43,10 @@ struct PlaceUtils{
         let vicinity = json["vicinity"].stringValue
         
         let icon = json["icon"].stringValue
-        let address = json["formatted_address"].stringValue
+        let address = json["formatted_address"].stringValue.replacingOccurrences(of: ", ", with: "\n")
         let phone = json["formatted_phone_number"].stringValue
         let internationalPhone = json["international_phone_number"].stringValue
+        let website = json["website"].stringValue
         let rating = json["rating"].doubleValue
         let distance = 0.0
         
@@ -63,6 +65,7 @@ struct PlaceUtils{
                      address: address,
                      phone: phone,
                      internationalPhone: internationalPhone,
+                     website: website,
                      rating: rating,
                      distance: distance,
                      photoReferences: photoReferences,
