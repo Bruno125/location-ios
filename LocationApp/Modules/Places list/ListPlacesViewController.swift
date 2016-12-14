@@ -22,8 +22,6 @@ class ListPlacesViewController: SheetViewController {
               partial: UIScreen.main.bounds.height - dividerView.frame.minY,
               scrollableView: tableView)
         
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.contentInset = UIEdgeInsetsMake(0, 0, fullView, 0); //values
 
     }

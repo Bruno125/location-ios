@@ -24,10 +24,10 @@ struct Place {
     let rating :Double
     var distance :Double
     
-    var photoReferences :[String] = []
-    var photoUrls : [String] = []
+    var photoReferences = [String]()
+    var photoUrls = [String]()
     
-    
+    var reviews = [Review]()
 }
 
 
@@ -56,6 +56,8 @@ struct PlaceUtils{
 
         let photoReferences = json["photos"].arrayValue.map{ $0["photo_reference"].stringValue }
         
+        let reviews = json["reviews"].arrayValue.map{ Review.parse(json: $0) }
+        
         return Place(id: id,
                      name: name,
                      latitude: latitude,
@@ -69,6 +71,7 @@ struct PlaceUtils{
                      rating: rating,
                      distance: distance,
                      photoReferences: photoReferences,
-                     photoUrls: [])
+                     photoUrls: [],
+                     reviews: reviews)
     }
 }

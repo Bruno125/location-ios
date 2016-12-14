@@ -20,6 +20,7 @@ class PlaceServiceRepo: PlaceRepo {
     private static let URL_BASE = AppUtils.getBaseUrl()
     private static let URL_NEARBY = "\(URL_BASE)/nearbysearch/json?location=%f,%f&radius=%d&key=\(API_KEY)"
     private static let URL_DETAILS = "\(URL_BASE)/details/json?placeid=%@&key=\(API_KEY)"
+    private static let URL_PHOTO = "\(URL_BASE)/photo?photoreference=%@&key=\(API_KEY)"
     
     func nearby(latitude: Double, longitude: Double, radius :Int, type: PlaceTypes) -> Observable<[Place]>{
 
@@ -53,9 +54,24 @@ class PlaceServiceRepo: PlaceRepo {
                     //Parse response into SwiftyJSON
                     let json = JSON(value)
                     //Parse result
-                    let place = PlaceUtils.parseDetail(from: json["result"])
-                    //Return the list
-                    observer.onNext(place!)
+                    var place = PlaceUtils.parseDetail(from: json["result"])
+                    
+                    if place == nil {
+                        observer.onError(PlaceError.invalidResponse)
+                    }else{
+                        //Parse photo urls
+                        var urls = [String]()
+                        for reference in place!.photoReferences{
+                            urls.append( String(format:PlaceServiceRepo.URL_PHOTO,reference) )
+                        }
+                        place!.photoUrls = urls
+                        
+                        //Return the list
+                        observer.onNext(place!)
+                    }
+                    
+                    
+                    
                 }else if let error = response.result.error{
                     observer.onError(error)
                 }
@@ -71,4 +87,8 @@ class PlaceServiceRepo: PlaceRepo {
         return Observable.just([])
     }
     
+}
+
+enum PlaceError : Error{
+    case invalidResponse
 }

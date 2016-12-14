@@ -15,7 +15,7 @@ class DetailViewController: SheetViewController {
     let mViewModel = DetailViewModel(source: Injection.getSource())
     let mDisposeBag = DisposeBag()
     var requestedDetails = false
-    var cellTypes = [DetailCellTypes]()
+    var cellTypes = [(type:DetailCellTypes,index:Int)]()
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var nameLabel: UILabel!
@@ -36,6 +36,8 @@ class DetailViewController: SheetViewController {
         setup(full: 80,
               partial: UIScreen.main.bounds.height - 170,
               scrollableView: tableView)
+        
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, fullView, 0); //values
     }
     
     func setupPlace(){
@@ -79,20 +81,27 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
     func calculateCells(for place: Place) -> Int {
         cellTypes = []
         
-        cellTypes.append(.directions)
+        cellTypes.append((.directions,0))
         
         if !place.name.isEmpty{
-            cellTypes.append(.address)
+            cellTypes.append((.address,0))
         }
         if !place.internationalPhone.isEmpty{
-            cellTypes.append(.phone)
+            cellTypes.append((.phone,0))
         }
         if !place.website.isEmpty{
-            cellTypes.append(.website)
+            cellTypes.append((.website,0))
         }
         
         if !place.photoUrls.isEmpty{
-            cellTypes.append(.photos)
+            cellTypes.append((.photos,0))
+        }
+        
+        if !place.reviews.isEmpty {
+            cellTypes.append((.commentsHeader,0))
+            for i in 0...place.reviews.count-1{
+                cellTypes.append((.comments,i))
+            }
         }
         
         return cellTypes.count
@@ -105,7 +114,7 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
-        let type = cellTypes[indexPath.row]
+        let type = cellTypes[indexPath.row].type
         switch type {
         case .address:
             let tempCell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath) as! SimpleTableViewCell
@@ -123,6 +132,15 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
             cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath)
         case .photos:
             cell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath)
+        case .commentsHeader:
+            cell = tableView.dequeueReusableCell(withIdentifier: "CommentHeaderCell", for: indexPath)
+        case .comments:
+            let tempCell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+            let reviewIndex = cellTypes[indexPath.row].index
+            let review = place!.reviews[reviewIndex]
+            tempCell.commentLabel.text = review.text
+            tempCell.authorLabel.text = review.authorName
+            cell = tempCell
         default:
             break
         }
@@ -136,6 +154,10 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

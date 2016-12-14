@@ -36,6 +36,7 @@ class SheetViewController: UIViewController {
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGesture))
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
+        
     }
     
     
