@@ -11,7 +11,7 @@ import MapKit
 
 class CurrentLocationAnnotation: MKPointAnnotation {
 
-    let image = UIImage(named: "pin_current_location")
+    let image = UIImage(named: "pin_place_normal2")
 
     override init() {
         super.init()
@@ -22,8 +22,8 @@ class CurrentLocationAnnotation: MKPointAnnotation {
 class PlaceAnnotation: MKPointAnnotation {
     
     var place: Place
-    let image = UIImage(named: "pin_place_normal")
-    let imageSelected = UIImage(named: "pin_place_selected")
+    let image = UIImage(named: "pin_place_normal3")
+    let imageSelected = UIImage(named: "pin_place_selected2")
     
     init(with place: Place){
         self.place = place
