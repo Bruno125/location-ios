@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     internal var detailSheet : DetailViewController?
     
     internal var currentAnnotation : MKPointAnnotation?
+    internal var selectedAnnotation : MKAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
     }
     
     func openPlaceDetail(_ place: Place){
-        if self.detailSheet != nil {
+        if self.detailSheet != nil{
             removeSheetView(self.detailSheet!)
         }
         
@@ -181,6 +182,7 @@ extension ViewController : MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        selectedAnnotation = view.annotation
         if let placeAnnotation = view.annotation as? PlaceAnnotation {
             let place = placeAnnotation.place
             //Center camera at selected place
@@ -195,11 +197,16 @@ extension ViewController : MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if selectedAnnotation === view.annotation {
+            selectedAnnotation = nil
+        }
         if let placeAnnotation = view.annotation as? PlaceAnnotation {
+            //Reset pin image
             UIView.transition(with: view, duration: 0.3, options: [.curveLinear,.allowAnimatedContent], animations: {
                 view.image = placeAnnotation.image
             }, completion: nil)
-            
+            //Close detail
+            detailSheet?.collapse(completely: true)
         }
     }
 }
@@ -212,6 +219,15 @@ extension ViewController : SheetDelegate{
     func sheetDidCollapse(controller: SheetViewController, completely: Bool) {
         if completely {
             removeSheetView(controller)
+            
+            if controller is DetailViewController && controller == detailSheet{
+                detailSheet = nil
+                if selectedAnnotation != nil {
+                    mapView.deselectAnnotation(selectedAnnotation, animated: true)
+                }
+            }
+            
+            
         }
     }
 }
