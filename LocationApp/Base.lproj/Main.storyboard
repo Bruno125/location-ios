@@ -33,26 +33,83 @@
                                     <constraint firstAttribute="width" secondItem="qeL-gp-xN3" secondAttribute="height" multiplier="1:1" id="IAi-07-BED"/>
                                 </constraints>
                             </imageView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fi4-dd-gaf">
+                                <rect key="frame" x="41" y="364" width="293" height="129"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need your location permission before proceeding." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYi-bw-cYO">
+                                        <rect key="frame" x="0.0" y="0.0" width="293" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nb9-dI-iJm">
+                                        <rect key="frame" x="21" y="71" width="250" height="50"/>
+                                        <color key="backgroundColor" red="0.1137254902" green="0.54117647059999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="KNe-ho-PLK"/>
+                                            <constraint firstAttribute="width" constant="250" id="rfO-bZ-w6F"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Grant location permisson"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionGrantPermission:" destination="OIF-am-KzK" eventType="touchUpInside" id="ihG-GW-c4Z"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="nb9-dI-iJm" firstAttribute="centerX" secondItem="fi4-dd-gaf" secondAttribute="centerX" id="5O9-Ql-TEb"/>
+                                    <constraint firstAttribute="bottom" secondItem="nb9-dI-iJm" secondAttribute="bottom" constant="8" id="Dwz-UB-NbM"/>
+                                    <constraint firstItem="nb9-dI-iJm" firstAttribute="top" secondItem="nYi-bw-cYO" secondAttribute="bottom" constant="30" id="P8Q-3J-9VV"/>
+                                    <constraint firstAttribute="trailing" secondItem="nYi-bw-cYO" secondAttribute="trailing" id="Pho-1d-oQw"/>
+                                    <constraint firstItem="nYi-bw-cYO" firstAttribute="top" secondItem="fi4-dd-gaf" secondAttribute="top" id="WX1-Fm-hVM"/>
+                                    <constraint firstItem="nYi-bw-cYO" firstAttribute="leading" secondItem="fi4-dd-gaf" secondAttribute="leading" id="dxV-UJ-0cA"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_icon_location" translatesAutoresizingMaskIntoConstraints="NO" id="Wqj-9B-wym">
+                                <rect key="frame" x="166" y="312" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Gc7-G8-SLr"/>
+                                    <constraint firstAttribute="width" secondItem="Wqj-9B-wym" secondAttribute="height" multiplier="1:1" id="R5K-bf-lFA"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Wqj-9B-wym" firstAttribute="width" secondItem="Wqj-9B-wym" secondAttribute="height" multiplier="1:1" id="3FP-Tl-RQK"/>
                             <constraint firstItem="qeL-gp-xN3" firstAttribute="centerY" secondItem="LXg-AH-iLB" secondAttribute="centerY" id="51h-Zh-Ujt"/>
                             <constraint firstItem="qeL-gp-xN3" firstAttribute="width" secondItem="qeL-gp-xN3" secondAttribute="height" multiplier="1:1" id="EtI-Ch-wBA"/>
+                            <constraint firstItem="fi4-dd-gaf" firstAttribute="top" secondItem="Wqj-9B-wym" secondAttribute="bottom" constant="8" id="GPE-yz-xMx"/>
                             <constraint firstItem="Dw3-9w-m9I" firstAttribute="top" secondItem="LXg-AH-iLB" secondAttribute="top" id="HcJ-rU-IfQ"/>
                             <constraint firstAttribute="trailing" secondItem="Dw3-9w-m9I" secondAttribute="trailing" id="Hpb-aO-veg"/>
                             <constraint firstItem="Tcg-ch-0RA" firstAttribute="top" secondItem="Dw3-9w-m9I" secondAttribute="bottom" id="LYC-cu-ggm"/>
+                            <constraint firstItem="Wqj-9B-wym" firstAttribute="centerX" secondItem="LXg-AH-iLB" secondAttribute="centerX" id="Xuj-Mj-abf"/>
                             <constraint firstItem="qeL-gp-xN3" firstAttribute="centerX" secondItem="LXg-AH-iLB" secondAttribute="centerX" id="cBV-qh-SbI"/>
                             <constraint firstItem="Dw3-9w-m9I" firstAttribute="leading" secondItem="LXg-AH-iLB" secondAttribute="leading" id="kfD-m0-NqS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fi4-dd-gaf" secondAttribute="trailing" constant="25" id="tWN-lJ-Phq"/>
+                            <constraint firstItem="fi4-dd-gaf" firstAttribute="leading" secondItem="LXg-AH-iLB" secondAttribute="leadingMargin" constant="25" id="tXd-d0-znp"/>
+                            <constraint firstItem="Wqj-9B-wym" firstAttribute="centerY" secondItem="LXg-AH-iLB" secondAttribute="centerY" id="y04-ch-cgh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="grantLocationButton" destination="nb9-dI-iJm" id="Fh4-8F-rbk"/>
+                        <outlet property="hintLabel" destination="nYi-bw-cYO" id="1bx-VC-UmW"/>
                         <outlet property="iconImageView" destination="qeL-gp-xN3" id="rxx-DW-75l"/>
                         <outlet property="iconWidthConstraint" destination="2eS-xT-dQq" id="Tpb-yP-j6u"/>
+                        <outlet property="locationCenterYConstraint" destination="y04-ch-cgh" id="YMu-CN-tms"/>
+                        <outlet property="locationImageView" destination="Wqj-9B-wym" id="65J-6G-Evq"/>
+                        <outlet property="locationWidthConstraint" destination="Gc7-G8-SLr" id="l1q-k7-jmU"/>
+                        <outlet property="permissionHintView" destination="fi4-dd-gaf" id="KW3-qu-m9y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kci-LL-lsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-302" y="139"/>
+            <point key="canvasLocation" x="-511.19999999999999" y="517.6911544227886"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="OD1-28-oNr">
@@ -405,10 +462,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Gjo-Ht-hjU" secondAttribute="trailing" id="3ML-7d-5MB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Gjo-Ht-hjU" secondAttribute="bottom" constant="7" id="5D3-Sp-WUA"/>
                                                 <constraint firstItem="kkF-Pl-5SZ" firstAttribute="leading" secondItem="qrb-Ta-hr1" secondAttribute="leadingMargin" id="DME-mi-Oty"/>
                                                 <constraint firstItem="kkF-Pl-5SZ" firstAttribute="trailing" secondItem="qrb-Ta-hr1" secondAttribute="trailingMargin" id="Fxo-2A-dQe"/>
                                                 <constraint firstItem="kkF-Pl-5SZ" firstAttribute="top" secondItem="qrb-Ta-hr1" secondAttribute="topMargin" id="NFY-bR-5jR"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Gjo-Ht-hjU" secondAttribute="bottom" constant="7" id="PQI-nz-VB4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Vsv-fh-GSe" secondAttribute="trailing" id="PXa-lk-n7I"/>
                                                 <constraint firstItem="Gjo-Ht-hjU" firstAttribute="leading" secondItem="qrb-Ta-hr1" secondAttribute="leadingMargin" id="TeH-yO-jdy"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Vsv-fh-GSe" secondAttribute="bottom" id="fnm-B1-HHm"/>
@@ -566,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272" y="139"/>
+            <point key="canvasLocation" x="522" y="139"/>
         </scene>
         <!--List Places View Controller-->
         <scene sceneID="V8r-i5-WRL">
@@ -617,7 +674,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBK-Pn-VZU" id="fIv-dQ-80n">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5VC-hU-gfU">
@@ -726,7 +783,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="app_icon_clear" width="175" height="175"/>
+        <image name="app_icon_clear" width="256" height="256"/>
+        <image name="app_icon_location" width="256" height="256"/>
         <image name="icon_cancel" width="22" height="22"/>
         <image name="icon_gps" width="22" height="22"/>
         <image name="icon_link" width="22" height="22"/>

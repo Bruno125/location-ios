@@ -35,4 +35,14 @@ extension UIViewController {
         }
         
     }
+    
+    func goToSettings(){
+        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: nil)
+        }
+    }
 }
