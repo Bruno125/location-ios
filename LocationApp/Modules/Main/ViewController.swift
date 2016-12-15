@@ -30,7 +30,6 @@ class ViewController: UIViewController {
         mViewModel.getPlacesStream().subscribe(onNext: { place in
             self.mPlaces.append(place)
             self.addAsAnnotation(place)
-            
             if self.listSheet != nil{
                 self.listSheet!.updated(places: self.mPlaces)
             }
@@ -146,7 +145,7 @@ extension ViewController : MKMapViewDelegate{
         }
         //For place annotation
         if let placeAnnotation = annotation as? PlaceAnnotation{
-            annotationView?.canShowCallout = false
+            annotationView?.canShowCallout = true
             annotationView?.image = placeAnnotation.image
         }
         

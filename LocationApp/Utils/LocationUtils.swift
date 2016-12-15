@@ -15,8 +15,10 @@ class LocationUtils : NSObject, CLLocationManagerDelegate {
     static let sharedInstance = LocationUtils()
     private let locationManager = CLLocationManager()
     
-    private let locationSubject = PublishSubject<CLLocationCoordinate2D>()
+    private var locationSubject = PublishSubject<CLLocationCoordinate2D>()
     func getCurrentLocation() -> Observable<CLLocationCoordinate2D>{
+        //Init location subject
+        locationSubject = PublishSubject<CLLocationCoordinate2D>()
         // For use in foreground
         locationManager.requestWhenInUseAuthorization()
         //Check if service is enabled
@@ -32,6 +34,7 @@ class LocationUtils : NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let coordinates:CLLocationCoordinate2D = manager.location!.coordinate
         locationSubject.onNext(coordinates)
+        locationSubject.onCompleted()
         locationManager.stopUpdatingLocation()
     }
     

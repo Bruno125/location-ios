@@ -28,6 +28,7 @@ class PlaceAnnotation: MKPointAnnotation {
     init(with place: Place){
         self.place = place
         super.init()
+        title = place.name
         let centerCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude:place.longitude)
         coordinate = centerCoordinate
     }
