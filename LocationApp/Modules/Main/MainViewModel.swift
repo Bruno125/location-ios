@@ -53,4 +53,13 @@ class MainViewModel {
         
         
     }
+    
+    func requestedCurrentLocation(){
+        LocationUtils.sharedInstance.getCurrentLocation()
+            .subscribe(onNext:{ location in
+                //Notify location
+                self.currentLocationSubject.onNext(location)
+            }).addDisposableTo(mDisposeBag)
+    }
+    
 }

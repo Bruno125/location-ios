@@ -46,6 +46,12 @@ class ViewController: UIViewController {
         mViewModel.start()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupSheets()
+        
+    }
+    
     func openPlaceDetail(_ place: Place){
         if self.detailSheet != nil{
             removeSheetView(self.detailSheet!)
@@ -66,22 +72,7 @@ class ViewController: UIViewController {
     // MARK: Location
     
     @IBAction func actionLocation(_ sender: Any) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Current location", style: .default, handler: { a in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Pick location on map", style: .default, handler: { a in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "By postcode", style: .default, handler: { a in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { a in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        present(alert, animated: true, completion: nil)
+        showLocationOptions()
     }
     
     // MARK: Settings
@@ -90,42 +81,23 @@ class ViewController: UIViewController {
 
 }
 
-/// Sheets handling
+//Location handling
 extension ViewController {
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupSheets()
+    func showLocationOptions(){
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-    }
-    
-    func setupSheets(){
-        //Add list of places view controller
-        self.listSheet = storyboard?.instantiateViewController(withIdentifier: "List Places") as? ListPlacesViewController
-        addBottomSheetView(self.listSheet!)
-        self.listSheet!.updated(places: self.mPlaces)
-    }
-    
-    func addBottomSheetView(_ bottomSheetVC: SheetViewController) {
-        // Add self as delegate
-        bottomSheetVC.delegate = self
+        alert.addAction(UIAlertAction(title: "Current location", style: .default, handler: { a in
+            self.mViewModel.requestedCurrentLocation()
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Pick location on map", style: .default, handler: { a in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { a in
+            alert.dismiss(animated: true, completion: nil)
+        }))
         
-        // Add bottomSheetVC as a child view
-        self.addChildViewController(bottomSheetVC)
-        self.view.addSubview(bottomSheetVC.view)
-        bottomSheetVC.didMove(toParentViewController: self)
-        
-        // Adjust bottomSheet frame and initial position.
-        let height = UIScreen.main.bounds.height
-        let width  = UIScreen.main.bounds.width
-        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
-        
-        // 4- update sheet list
-        self.listSheet!.updated(places: self.mPlaces)
-    }
-    
-    func removeSheetView(_ sheetVC: SheetViewController){
-        sheetVC.view.removeFromSuperview()
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -212,22 +184,52 @@ extension ViewController : MKMapViewDelegate{
 }
 
 extension ViewController : SheetDelegate{
+    // MARK: SheetDelegate implementation
     func sheetDidSelect(place: Place) {
         openPlaceDetail(place)
     }
     
     func sheetDidCollapse(controller: SheetViewController, completely: Bool) {
         if completely {
+            //Remove sheet
             removeSheetView(controller)
-            
+            //Dereference detail is matches current
             if controller is DetailViewController && controller == detailSheet{
                 detailSheet = nil
                 if selectedAnnotation != nil {
                     mapView.deselectAnnotation(selectedAnnotation, animated: true)
                 }
             }
-            
-            
         }
+    }
+    
+    // MARK: Sheet-related functions
+    func setupSheets(){
+        //Add list of places view controller
+        self.listSheet = storyboard?.instantiateViewController(withIdentifier: "List Places") as? ListPlacesViewController
+        addBottomSheetView(self.listSheet!)
+        self.listSheet!.updated(places: self.mPlaces)
+    }
+    
+    func addBottomSheetView(_ bottomSheetVC: SheetViewController) {
+        // Add self as delegate
+        bottomSheetVC.delegate = self
+        
+        // Add bottomSheetVC as a child view
+        self.addChildViewController(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParentViewController: self)
+        
+        // Adjust bottomSheet frame and initial position.
+        let height = UIScreen.main.bounds.height
+        let width  = UIScreen.main.bounds.width
+        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+        
+        // 4- update sheet list
+        self.listSheet!.updated(places: self.mPlaces)
+    }
+    
+    func removeSheetView(_ sheetVC: SheetViewController){
+        sheetVC.view.removeFromSuperview()
     }
 }
