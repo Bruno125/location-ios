@@ -30,7 +30,11 @@ class SettingsViewModel {
                 PlaceTypes.Parking(),
                 PlaceTypes.Restaurant(),
                 PlaceTypes.TrainStation(),
-                PlaceTypes.University()]
+                PlaceTypes.University(),
+                PlaceTypes.Bank(),
+                PlaceTypes.Library(),
+                PlaceTypes.School(),
+                PlaceTypes.Stadium()]
         }
         
         return categoriesSubject.asObservable()

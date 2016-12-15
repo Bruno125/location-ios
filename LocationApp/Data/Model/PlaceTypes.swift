@@ -57,4 +57,36 @@ class PlaceTypes{
         let key = "train_station"
         var selected = false
     }
+    
+    class Bank : PlaceType{
+        let name = "Bank"
+        let key = "bank"
+        var selected = false
+    }
+    
+    class Church : PlaceType{
+        let name = "Church"
+        let key = "church"
+        var selected = false
+    }
+    
+    
+    class Library : PlaceType{
+        let name = "Library"
+        let key = "library"
+        var selected = false
+    }
+    
+    
+    class School : PlaceType{
+        let name = "School"
+        let key = "stadium"
+        var selected = false
+    }
+    
+    class Stadium : PlaceType{
+        let name = "Stadium"
+        let key = "stadium"
+        var selected = false
+    }
 }
