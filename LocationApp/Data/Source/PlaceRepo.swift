@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 protocol PlaceRepo {
-    func nearby(latitude :Double, longitude :Double, radius :Int, type :PlaceTypes) -> Observable<[Place]>
+    func nearby(latitude :Double, longitude :Double, radius :Int, type :[PlaceType]) -> Observable<[Place]>
     func getDetails(placeId :String) -> Observable<Place>
     func getPhotos(referenceNumber :String) -> Observable<[String]>
 }

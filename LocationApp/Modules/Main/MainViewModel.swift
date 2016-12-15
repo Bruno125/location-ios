@@ -37,7 +37,7 @@ class MainViewModel {
         //Request places that are near our current location
         let request = self.mSource.nearby(latitude: location.latitude,
                                           longitude: location.longitude,
-                                          radius: AppUtils.getRadius(), type: .none)
+                                          radius: AppUtils.getRadius(), type: [])
         request.flatMap { place in
             return Observable.from(place)
         }.subscribe(onNext:{ place in

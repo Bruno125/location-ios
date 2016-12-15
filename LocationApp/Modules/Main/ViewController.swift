@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     internal var listSheet : ListPlacesViewController?
     internal var detailSheet : DetailViewController?
+    internal var settingsSheet : SettingsViewController?
     
     internal var currentAnnotation : MKPointAnnotation?
     internal var selectedAnnotation : MKAnnotation?
@@ -77,10 +78,6 @@ class ViewController: UIViewController {
         addBottomSheetView(self.detailSheet!)
     }
     
-    
-    // MARK: Place list sheet
-    
-    
     // MARK: IBActions
     
     @IBAction func actionLocation(_ sender: Any) {
@@ -88,6 +85,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionSettings(_ sender: Any) {
+        //Add settings vc
+        self.settingsSheet = storyboard?.instantiateViewController(withIdentifier: "Settings") as? SettingsViewController
+        self.mapView.alpha = 0.5
+        self.optionsContainerView.isHidden = true
+        addBottomSheetView(self.settingsSheet!)
     }
     
     @IBAction func actionPlaceMe(_ sender: Any) {
@@ -268,6 +270,12 @@ extension ViewController : SheetDelegate{
                     mapView.deselectAnnotation(selectedAnnotation, animated: true)
                 }
             }
+            //Dereference setting vc
+            if controller is SettingsViewController{
+                settingsSheet = nil
+                mapView.alpha = 1
+                self.optionsContainerView.isHidden = false
+            }
         }
     }
     
@@ -277,6 +285,7 @@ extension ViewController : SheetDelegate{
         self.listSheet = storyboard?.instantiateViewController(withIdentifier: "List Places") as? ListPlacesViewController
         addBottomSheetView(self.listSheet!)
         self.listSheet!.updated(places: self.mPlaces)
+        
     }
     
     func addBottomSheetView(_ bottomSheetVC: SheetViewController) {

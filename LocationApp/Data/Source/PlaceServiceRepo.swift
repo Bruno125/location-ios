@@ -22,7 +22,7 @@ class PlaceServiceRepo: PlaceRepo {
     private static let URL_DETAILS = "\(URL_BASE)/details/json?placeid=%@&key=\(API_KEY)"
     private static let URL_PHOTO = "\(URL_BASE)/photo?photoreference=%@&key=\(API_KEY)"
     
-    func nearby(latitude: Double, longitude: Double, radius :Int, type: PlaceTypes) -> Observable<[Place]>{
+    func nearby(latitude: Double, longitude: Double, radius :Int, type: [PlaceType]) -> Observable<[Place]>{
 
         return Observable.create { observer in
             let url = String(format:PlaceServiceRepo.URL_NEARBY,latitude,longitude,radius)

@@ -15,7 +15,7 @@ class PlaceFileSource: PlaceRepo {
     static let sharedInstance = PlaceFileSource()
     private init(){}
     
-    func nearby(latitude: Double, longitude: Double, radius :Int, type: PlaceTypes) -> Observable<[Place]>{
+    func nearby(latitude: Double, longitude: Double, radius :Int, type: [PlaceType]) -> Observable<[Place]>{
         
         return Observable.create{ observer in
             do{

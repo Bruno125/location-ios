@@ -8,12 +8,45 @@
 
 import UIKit
 
-enum PlaceTypes{
-    case theater
-    case museum
-    case restaurant
-    case library
-    case bar
-    case nightclub
-    case none
+protocol PlaceType{
+    var name: String {get}
+    var key: String {get}
+}
+
+class PlaceTypes{
+    
+    class Restaurant : PlaceType{
+        let name = "Restaurant"
+        let key = "restaurant"
+    }
+    
+    class Hospital : PlaceType{
+        let name = "Art gallery"
+        let key = "art_gallery"
+    }
+    
+    class Atm : PlaceType{
+        let name = "ATM"
+        let key = "atm"
+    }
+    
+    class Parking : PlaceType{
+        let name = "Parking"
+        let key = "parking"
+    }
+    
+    class Cafe : PlaceType{
+        let name = "Cafe"
+        let key = "cafe"
+    }
+    
+    class University : PlaceType{
+        let name = "University"
+        let key = "university"
+    }
+    
+    class TrainStation : PlaceType{
+        let name = "Train station"
+        let key = "train_station"
+    }
 }

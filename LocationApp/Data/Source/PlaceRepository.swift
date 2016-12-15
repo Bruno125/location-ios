@@ -14,7 +14,7 @@ class PlaceRepository: PlaceRepo {
     static let sharedInstance = PlaceRepository()
     
     
-    func nearby(latitude: Double, longitude: Double, radius :Int, type: PlaceTypes) -> Observable<[Place]>{
+    func nearby(latitude: Double, longitude: Double, radius :Int, type: [PlaceType]) -> Observable<[Place]>{
         return PlaceServiceRepo.sharedInstance.nearby(latitude: latitude, longitude: longitude, radius: radius, type: type)
     }
     
