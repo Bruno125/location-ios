@@ -19,10 +19,12 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         setUI(selected: false)
     }
     
+    
+    
     func setUI(selected: Bool){
         if selected {
             mainLabel.textColor = .white
-            backgroundColor = .blue
+            backgroundColor = UIColor(netHex:0x1D8AFE)
         }else{
             mainLabel.textColor = .darkGray
             backgroundColor = UIColor(netHex:0xEEEEEE)

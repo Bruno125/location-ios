@@ -29,6 +29,8 @@
 		39018B8C1E03185800AE37AC /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B8A1E03185800AE37AC /* CustomFlowLayout.swift */; };
 		39018B8E1E03197C00AE37AC /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39018B8D1E03197C00AE37AC /* CategoryCollectionViewCell.xib */; };
 		39018B8F1E03197C00AE37AC /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39018B8D1E03197C00AE37AC /* CategoryCollectionViewCell.xib */; };
+		39018B911E03331300AE37AC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B901E03331300AE37AC /* SettingsViewModel.swift */; };
+		39018B921E03331300AE37AC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39018B901E03331300AE37AC /* SettingsViewModel.swift */; };
 		392948C51DFEFC1100D968E6 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C41DFEFC1100D968E6 /* AppUtils.swift */; };
 		392948C61DFEFC1100D968E6 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948C41DFEFC1100D968E6 /* AppUtils.swift */; };
 		392948CB1DFF16D600D968E6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948CA1DFF16D600D968E6 /* MainViewModel.swift */; };
@@ -105,6 +107,7 @@
 		39018B871E030D8200AE37AC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCollectionViewCell.swift; path = Modules/Settings/CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		39018B8A1E03185800AE37AC /* CustomFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFlowLayout.swift; path = Modules/Settings/CustomFlowLayout.swift; sourceTree = "<group>"; };
 		39018B8D1E03197C00AE37AC /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCollectionViewCell.xib; path = Modules/Settings/CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		39018B901E03331300AE37AC /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = Modules/Settings/SettingsViewModel.swift; sourceTree = "<group>"; };
 		392948C41DFEFC1100D968E6 /* AppUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUtils.swift; path = Utils/AppUtils.swift; sourceTree = "<group>"; };
 		392948CA1DFF16D600D968E6 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = Modules/Main/MainViewModel.swift; sourceTree = "<group>"; };
 		392948CD1DFF198B00D968E6 /* LocationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationUtils.swift; path = Utils/LocationUtils.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				39018B841E030D6F00AE37AC /* SettingsViewController.swift */,
+				39018B901E03331300AE37AC /* SettingsViewModel.swift */,
 				39018B871E030D8200AE37AC /* CategoryCollectionViewCell.swift */,
 				39018B8D1E03197C00AE37AC /* CategoryCollectionViewCell.xib */,
 				39018B8A1E03185800AE37AC /* CustomFlowLayout.swift */,
@@ -564,6 +568,7 @@
 				392948E91E0178CE00D968E6 /* DetailViewController.swift in Sources */,
 				39018B6F1E01AEE500AE37AC /* DirectionsTableViewCell.swift in Sources */,
 				39C30F1E1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
+				39018B911E03331300AE37AC /* SettingsViewModel.swift in Sources */,
 				392948DF1E00BDE200D968E6 /* ImageViewUtils.swift in Sources */,
 				39C30F141DEB89F700B518C8 /* Place.swift in Sources */,
 				392948D61E00277500D968E6 /* ListPlacesViewController.swift in Sources */,
@@ -600,6 +605,7 @@
 				392948EA1E0178CE00D968E6 /* DetailViewController.swift in Sources */,
 				39018B701E01AEE500AE37AC /* DirectionsTableViewCell.swift in Sources */,
 				39C30F221DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
+				39018B921E03331300AE37AC /* SettingsViewModel.swift in Sources */,
 				392948E01E00BDE200D968E6 /* ImageViewUtils.swift in Sources */,
 				39C30F2F1DF3460200B518C8 /* PlaceRepository.swift in Sources */,
 				392948D71E00277500D968E6 /* ListPlacesViewController.swift in Sources */,

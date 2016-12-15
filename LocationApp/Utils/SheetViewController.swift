@@ -99,7 +99,7 @@ class SheetViewController: UIViewController {
                 if  velocity.y >= 0 {
                     self.view.frame = CGRect(x: 0, y: self.partialView, width: self.view.frame.width, height: self.view.frame.height)
                 } else {
-                    self.view.frame = CGRect(x: 0, y: self.fullView, width: self.view.frame.width, height: self.view.frame.height)
+                    self.expand()
                 }
                 
             }, completion: { [weak self] _ in
@@ -108,6 +108,10 @@ class SheetViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    func expand(){
+        self.view.frame = CGRect(x: 0, y: self.fullView, width: self.view.frame.width, height: self.view.frame.height)
     }
     
     func collapse(completely: Bool = false){

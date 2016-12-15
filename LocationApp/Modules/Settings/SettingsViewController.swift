@@ -7,56 +7,61 @@
 //
 
 import UIKit
+import RxSwift
 
 class SettingsViewController: SheetViewController {
 
-    internal let categories : [PlaceType] = [
-        PlaceTypes.Atm(),
-        PlaceTypes.Cafe(),
-        PlaceTypes.Hospital(),
-        PlaceTypes.Parking(),
-        PlaceTypes.Restaurant(),
-        PlaceTypes.TrainStation(),
-        PlaceTypes.University(),
-        PlaceTypes.Atm(),
-        PlaceTypes.Cafe(),
-        PlaceTypes.Hospital(),
-        PlaceTypes.Parking(),
-        PlaceTypes.Restaurant(),
-        PlaceTypes.TrainStation(),
-        PlaceTypes.University(),
-        PlaceTypes.Atm(),
-        PlaceTypes.Cafe(),
-        PlaceTypes.Hospital(),
-        PlaceTypes.Parking(),
-        PlaceTypes.Restaurant(),
-        PlaceTypes.TrainStation(),
-        PlaceTypes.University()]
+    internal var mViewModel = SettingsViewModel(source:Injection.getSource())
+    internal let mDisposeBag = DisposeBag()
+    internal var categories : [PlaceType] = []
     
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var applyButton: UIButton!
     var sizingCell : CategoryCollectionViewCell?
     @IBOutlet var flowLayout: CustomFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setup(full: 150,
-              partial: UIScreen.main.bounds.height - 300,
+        let fixedSize = UIScreen.main.bounds.height - applyButton.frame.maxY - 10
+        setup(full: fixedSize,
+              partial: fixedSize,
               scrollableView: collectionView)
         
+        setupCollectionView()
+        
+        mViewModel.getCategoriesStream()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { categories in
+            self.categories = categories
+            self.collectionView.reloadData()
+        }).addDisposableTo(mDisposeBag)
+        
+        mViewModel.start()
+    }
+    
+    func setupCollectionView(){
+        //Set inset for sheet behavior
         collectionView.contentInset = UIEdgeInsetsMake(0, 0, fullView, 0);
-        
-        
+        //Setup cells
         let cellNib = UINib(nibName: "CategoryCollectionViewCell", bundle: nil)
         self.collectionView.register(cellNib, forCellWithReuseIdentifier: "CategoryCell")
         self.collectionView.backgroundColor = .clear
-        
+        //Setup for flowlayout
         self.sizingCell = (cellNib.instantiate(withOwner: nil, options: nil) as NSArray).firstObject as! CategoryCollectionViewCell?
         self.flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        
+    }
+    
+    @IBAction func actionApply(_ sender: Any) {
     }
     
     @IBAction func actionClose(_ sender: Any) {
         collapse(completely: true)
+    }
+    
+    func getResults() -> Observable<(radius: Int,types: [PlaceType])>{
+        return mViewModel.getResults(radius: 10)
     }
     
 }
@@ -77,6 +82,12 @@ extension SettingsViewController : UICollectionViewDelegate,UICollectionViewData
     func configure(cell: CategoryCollectionViewCell, forIndexPath indexPath: IndexPath) {
         let category = categories[indexPath.row]
         cell.mainLabel.text = category.name
+        cell.setUI(selected: category.selected)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: false)
+        mViewModel.selected(index: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
