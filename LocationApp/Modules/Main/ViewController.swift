@@ -133,6 +133,7 @@ extension ViewController {
             self.mapView.alpha = start ? 0.5 : 1
             self.optionsContainerView.isHidden = start
             self.listSheet?.view.isHidden = start
+            self.detailSheet?.collapse(completely: true)
         })
     }
     
