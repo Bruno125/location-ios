@@ -33,25 +33,16 @@ class MainViewModel {
     
     // MARK: General
     
-    func start(){
-        //Get current location
-        LocationUtils.sharedInstance.getCurrentLocation()
-            .subscribe(onNext:{ location in
-                //Request places that are near our current location
-                let request = self.mSource.nearby(latitude: location.latitude,
-                                         longitude: location.longitude,
-                                         radius: AppUtils.getRadius(), type: .none)
-                request.flatMap { place in
-                    return Observable.from(place)
-                }.subscribe(onNext:{ place in
-                        self.placesSubject.onNext(place)
-                }).addDisposableTo(self.mDisposeBag)
-                
-                //Notify location
-                self.currentLocationSubject.onNext(location)
-        }).addDisposableTo(mDisposeBag)
-        
-        
+    func requestPlaces(for location: CLLocationCoordinate2D){
+        //Request places that are near our current location
+        let request = self.mSource.nearby(latitude: location.latitude,
+                                          longitude: location.longitude,
+                                          radius: AppUtils.getRadius(), type: .none)
+        request.flatMap { place in
+            return Observable.from(place)
+        }.subscribe(onNext:{ place in
+            self.placesSubject.onNext(place)
+        }).addDisposableTo(self.mDisposeBag)
     }
     
     func requestedCurrentLocation(){
@@ -60,6 +51,10 @@ class MainViewModel {
                 //Notify location
                 self.currentLocationSubject.onNext(location)
             }).addDisposableTo(mDisposeBag)
+    }
+    
+    func userPicked(location: CLLocationCoordinate2D){
+        currentLocationSubject.onNext(location)
     }
     
 }

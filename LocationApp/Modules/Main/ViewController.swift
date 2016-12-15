@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     internal let mViewModel = MainViewModel(source: Injection.getSource())
     internal let mDisposeBag = DisposeBag()
     internal var mPlaces : [Place] = []
+    internal var mAnnotationId = 0
     
     internal var listSheet : ListPlacesViewController?
     internal var detailSheet : DetailViewController?
@@ -45,13 +46,16 @@ class ViewController: UIViewController {
         mViewModel.getCurrentLocationStream()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { location in
+                //Remove current annotations
+                self.removeAllAnnotation()
+                self.mPlaces = []
+                //Request places again
+                self.mViewModel.requestPlaces(for: location)
+                //Place current location annotation
                 self.relocate(coordinates: location)
             }).addDisposableTo(mDisposeBag)
         
-        mViewModel.start()
-        
-        
-        
+        mViewModel.requestedCurrentLocation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,6 +91,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionPlaceMe(_ sender: Any) {
+        mViewModel.userPicked(location: mapView.centerCoordinate)
+        pickLocation(start: false)
     }
     
     @IBAction func actionCancelPick(_ sender: Any) {
@@ -176,8 +182,15 @@ extension ViewController : MKMapViewDelegate{
         self.mapView.addAnnotation(annotation)
     }
     
+    func removeAllAnnotation(){
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        self.currentAnnotation = nil
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseId = "pins"
+        let reuseId = "\(mAnnotationId)"
+        mAnnotationId += 1
+        
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
