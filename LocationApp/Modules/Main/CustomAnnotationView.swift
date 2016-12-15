@@ -9,16 +9,26 @@
 import UIKit
 import MapKit
 
-class CustomAnnotationView: MKPointAnnotation {
+class CurrentLocationAnnotation: MKPointAnnotation {
 
-    var place: Place?
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let image = UIImage(named: "pin_current_location")
+
+    override init() {
+        super.init()
+        title = "You're here"
     }
-    */
+}
 
+class PlaceAnnotation: MKPointAnnotation {
+    
+    var place: Place
+    let image = UIImage(named: "pin_place_normal")
+    let imageSelected = UIImage(named: "pin_place_selected")
+    
+    init(with place: Place){
+        self.place = place
+        super.init()
+        let centerCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude:place.longitude)
+        coordinate = centerCoordinate
+    }
 }

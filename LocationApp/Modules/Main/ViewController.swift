@@ -14,12 +14,14 @@ class ViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
     
-    private let mViewModel = MainViewModel(source: Injection.getSource())
-    private let mDisposeBag = DisposeBag()
-    private var mPlaces : [Place] = []
+    internal let mViewModel = MainViewModel(source: Injection.getSource())
+    internal let mDisposeBag = DisposeBag()
+    internal var mPlaces : [Place] = []
     
-    private var listSheet : ListPlacesViewController?
-    private var detailSheet : DetailViewController?
+    internal var listSheet : ListPlacesViewController?
+    internal var detailSheet : DetailViewController?
+    
+    internal var currentAnnotation : MKPointAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +45,11 @@ class ViewController: UIViewController {
         mViewModel.start()
     }
     
-    func addAsAnnotation(_ place :Place){
-        let annotation = CustomAnnotationView()
-        let centerCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude:place.longitude)
-        annotation.coordinate = centerCoordinate
-        annotation.title = place.name
-        annotation.place = place
-        self.mapView.addAnnotation(annotation)
-    }
-    
     func openPlaceDetail(_ place: Place){
+        if self.detailSheet != nil {
+            removeSheetView(self.detailSheet!)
+        }
+        
         //Init view controller
         self.detailSheet = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController
         //Assign place
@@ -61,49 +58,9 @@ class ViewController: UIViewController {
         addBottomSheetView(self.detailSheet!)
     }
     
-    func relocate(coordinates: CLLocationCoordinate2D) {
-        let viewRegion = MKCoordinateRegionMakeWithDistance(coordinates, 2500, 2500)
-        self.mapView.setRegion(viewRegion, animated: false)
-    }
     
     // MARK: Place list sheet
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupSheets()
-        
-    }
-    
-    func setupSheets(){
-        //Add list of places view controller
-        self.listSheet = storyboard?.instantiateViewController(withIdentifier: "List Places") as? ListPlacesViewController
-        addBottomSheetView(self.listSheet!)
-        self.listSheet!.updated(places: self.mPlaces)
-        
-        
-    }
-    
-    func addBottomSheetView(_ bottomSheetVC: SheetViewController) {
-        // Add self as delegate
-        bottomSheetVC.delegate = self
-        
-        // Add bottomSheetVC as a child view
-        self.addChildViewController(bottomSheetVC)
-        self.view.addSubview(bottomSheetVC.view)
-        bottomSheetVC.didMove(toParentViewController: self)
-        
-        // Adjust bottomSheet frame and initial position.
-        let height = UIScreen.main.bounds.height
-        let width  = UIScreen.main.bounds.width
-        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
-        
-        // 4- update sheet list
-        self.listSheet!.updated(places: self.mPlaces)
-    }
-    
-    func removeSheetView(_ sheetVC: SheetViewController){
-        sheetVC.view.removeFromSuperview()
-    }
     
     // MARK: Location
     
@@ -132,12 +89,117 @@ class ViewController: UIViewController {
 
 }
 
+/// Sheets handling
+extension ViewController {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupSheets()
+        
+    }
+    
+    func setupSheets(){
+        //Add list of places view controller
+        self.listSheet = storyboard?.instantiateViewController(withIdentifier: "List Places") as? ListPlacesViewController
+        addBottomSheetView(self.listSheet!)
+        self.listSheet!.updated(places: self.mPlaces)
+    }
+    
+    func addBottomSheetView(_ bottomSheetVC: SheetViewController) {
+        // Add self as delegate
+        bottomSheetVC.delegate = self
+        
+        // Add bottomSheetVC as a child view
+        self.addChildViewController(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParentViewController: self)
+        
+        // Adjust bottomSheet frame and initial position.
+        let height = UIScreen.main.bounds.height
+        let width  = UIScreen.main.bounds.width
+        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+        
+        // 4- update sheet list
+        self.listSheet!.updated(places: self.mPlaces)
+    }
+    
+    func removeSheetView(_ sheetVC: SheetViewController){
+        sheetVC.view.removeFromSuperview()
+    }
+}
+
 extension ViewController : MKMapViewDelegate{
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if let annotation = view.annotation as? CustomAnnotationView{
-            if annotation.place != nil{
-                openPlaceDetail(annotation.place!)
-            }
+    
+    func relocate(coordinates: CLLocationCoordinate2D, zoom: Bool = true) {
+        if currentAnnotation == nil {
+            //Create annotation
+            currentAnnotation = CurrentLocationAnnotation()
+            currentAnnotation!.coordinate = coordinates
+            self.mapView.addAnnotation(currentAnnotation!)
+        }else{
+            //Relocate current position
+            currentAnnotation?.coordinate = coordinates
+        }
+        
+        center(at: coordinates, zoom:zoom)
+    }
+    
+    func center(at coordinate: CLLocationCoordinate2D, zoom: Bool = true){
+        var viewRegion = self.mapView.region
+        viewRegion.center = coordinate
+        if zoom {
+            viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 2500, 2500)
+        }
+        self.mapView.setRegion(viewRegion, animated: true)
+    }
+    
+    func addAsAnnotation(_ place :Place){
+        let annotation = PlaceAnnotation(with:place)
+        self.mapView.addAnnotation(annotation)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "pins"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        }else{
+            annotationView?.annotation = annotation
+        }
+        //For current location annotation
+        if let currentAnnotation = annotation as? CurrentLocationAnnotation{
+            annotationView?.canShowCallout = true
+            annotationView?.image = currentAnnotation.image
+        }
+        //For place annotation
+        if let placeAnnotation = annotation as? PlaceAnnotation{
+            annotationView?.canShowCallout = false
+            annotationView?.image = placeAnnotation.image
+        }
+        
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let placeAnnotation = view.annotation as? PlaceAnnotation {
+            let place = placeAnnotation.place
+            //Center camera at selected place
+            center(at: placeAnnotation.coordinate,zoom: false)
+            //Animate image change
+            UIView.transition(with: view, duration: 0.3, options: [.curveLinear,.allowAnimatedContent], animations: {
+                view.image = placeAnnotation.imageSelected
+            }, completion: nil)
+            //Open place details
+            openPlaceDetail(place)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if let placeAnnotation = view.annotation as? PlaceAnnotation {
+            UIView.transition(with: view, duration: 0.3, options: [.curveLinear,.allowAnimatedContent], animations: {
+                view.image = placeAnnotation.image
+            }, completion: nil)
+            
         }
     }
 }
@@ -149,7 +211,7 @@ extension ViewController : SheetDelegate{
     
     func sheetDidCollapse(controller: SheetViewController, completely: Bool) {
         if completely {
-            //removeSheetView(controller)
+            removeSheetView(controller)
         }
     }
 }
