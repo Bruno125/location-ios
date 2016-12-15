@@ -558,6 +558,9 @@
                                             <constraint firstAttribute="width" secondItem="7bQ-Qm-wH6" secondAttribute="height" multiplier="1:1" id="Z2o-C1-2Qz"/>
                                         </constraints>
                                         <state key="normal" image="icon_settings"/>
+                                        <connections>
+                                            <action selector="actionSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ikp-p2-SKa"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbd-MM-Yqk">
                                         <rect key="frame" x="0.0" y="40" width="40" height="40"/>
@@ -605,25 +608,68 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin_place_normal2" translatesAutoresizingMaskIntoConstraints="NO" id="rdN-Eh-zjk">
+                                <rect key="frame" x="167" y="313" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rdN-Eh-zjk" secondAttribute="height" multiplier="1:1" id="D0b-WX-Tof"/>
+                                    <constraint firstAttribute="width" constant="40" id="g8N-YI-pl6"/>
+                                </constraints>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvN-S3-84c">
+                                <rect key="frame" x="62.5" y="557" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.1137254902" green="0.54117647059999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="EDf-mu-Dhe"/>
+                                    <constraint firstAttribute="height" constant="50" id="Xgg-3G-sSb"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Place me here"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionPlaceMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6w1-K4-9tC"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZt-KK-TjB">
+                                <rect key="frame" x="163.5" y="617" width="48" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="actionCancelPick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oae-fl-eEd"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QvN-S3-84c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AYD-fc-RRw"/>
+                            <constraint firstItem="rdN-Eh-zjk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Bqj-r3-oJI"/>
                             <constraint firstItem="3WM-Bq-JVB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DNX-5k-cTz"/>
+                            <constraint firstItem="mZt-KK-TjB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H9b-aT-Qid"/>
+                            <constraint firstItem="rdN-Eh-zjk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KBU-mn-MhM"/>
                             <constraint firstItem="tgF-uP-4fY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="NgC-q2-AtP"/>
                             <constraint firstItem="tgF-uP-4fY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="e6X-ry-uTG"/>
                             <constraint firstItem="3WM-Bq-JVB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="i2O-of-gfA"/>
                             <constraint firstAttribute="trailing" secondItem="3WM-Bq-JVB" secondAttribute="trailing" id="lYO-Vx-Fw3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QvN-S3-84c" secondAttribute="bottom" constant="60" id="tQx-Xw-4SY"/>
+                            <constraint firstItem="mZt-KK-TjB" firstAttribute="top" secondItem="QvN-S3-84c" secondAttribute="bottom" constant="10" id="xZk-Y1-oer"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3WM-Bq-JVB" secondAttribute="bottom" id="zk6-7f-Nkq"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="actionSettings" destination="7bQ-Qm-wH6" id="rCk-04-LpY"/>
+                        <outlet property="bouncingPinCenterYConstraint" destination="Bqj-r3-oJI" id="eIZ-h1-oFh"/>
+                        <outlet property="bouncingPinImageView" destination="rdN-Eh-zjk" id="xxr-8H-LVB"/>
+                        <outlet property="cancelPickButton" destination="mZt-KK-TjB" id="Rdu-NX-w7N"/>
                         <outlet property="mapView" destination="3WM-Bq-JVB" id="jZu-53-u7A"/>
+                        <outlet property="optionsContainerView" destination="tgF-uP-4fY" id="rze-nE-CRZ"/>
+                        <outlet property="placeMeButton" destination="QvN-S3-84c" id="vjE-hE-Gz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="522" y="139"/>
+            <point key="canvasLocation" x="520.79999999999995" y="138.98050974512745"/>
         </scene>
         <!--List Places View Controller-->
         <scene sceneID="V8r-i5-WRL">
@@ -791,5 +837,6 @@
         <image name="icon_phone" width="22" height="22"/>
         <image name="icon_settings" width="22" height="22"/>
         <image name="map_background" width="1024" height="768"/>
+        <image name="pin_place_normal2" width="40" height="40"/>
     </resources>
 </document>

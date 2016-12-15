@@ -13,6 +13,7 @@ import RxSwift
 class ViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet var optionsContainerView: UIView!
     
     internal let mViewModel = MainViewModel(source: Injection.getSource())
     internal let mDisposeBag = DisposeBag()
@@ -23,6 +24,11 @@ class ViewController: UIViewController {
     
     internal var currentAnnotation : MKPointAnnotation?
     internal var selectedAnnotation : MKAnnotation?
+    
+    @IBOutlet var placeMeButton: UIButton!
+    @IBOutlet var cancelPickButton: UIButton!
+    @IBOutlet var bouncingPinImageView: UIImageView!
+    @IBOutlet var bouncingPinCenterYConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +49,15 @@ class ViewController: UIViewController {
             }).addDisposableTo(mDisposeBag)
         
         mViewModel.start()
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupSheets()
-        
+        setupPickLocationViews()
     }
     
     func openPlaceDetail(_ place: Place){
@@ -68,16 +77,22 @@ class ViewController: UIViewController {
     // MARK: Place list sheet
     
     
-    // MARK: Location
+    // MARK: IBActions
     
     @IBAction func actionLocation(_ sender: Any) {
         showLocationOptions()
     }
     
-    // MARK: Settings
+    @IBAction func actionSettings(_ sender: Any) {
+    }
     
-    @IBOutlet var actionSettings: UIButton!
-
+    @IBAction func actionPlaceMe(_ sender: Any) {
+    }
+    
+    @IBAction func actionCancelPick(_ sender: Any) {
+        pickLocation(start: false)
+    }
+    
 }
 
 //Location handling
@@ -90,6 +105,7 @@ extension ViewController {
             alert.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Pick location on map", style: .default, handler: { a in
+            self.pickLocation(start: true)
             alert.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { a in
@@ -98,6 +114,35 @@ extension ViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    func setupPickLocationViews(){
+        pickLocation(start: false)
+        bouncingPinCenterYConstraint.constant -= 20
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func pickLocation(start: Bool){
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setAnnotations(visible: !start)
+            self.bouncingPinImageView.isHidden = !start
+            self.cancelPickButton.isHidden = !start
+            self.placeMeButton.isHidden = !start
+            
+            self.mapView.alpha = start ? 0.5 : 1
+            self.optionsContainerView.isHidden = start
+            self.listSheet?.view.isHidden = start
+        })
+    }
+    
+    func setAnnotations(visible: Bool){
+        for annotation in mapView.annotations {
+            mapView.view(for: annotation)?.isHidden = !visible
+        }
+    }
+    
+    
 }
 
 extension ViewController : MKMapViewDelegate{
