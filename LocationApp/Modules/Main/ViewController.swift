@@ -34,6 +34,12 @@ class ViewController: UIViewController {
             
         }).addDisposableTo(mDisposeBag)
         
+        mViewModel.getCurrentLocationStream()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { location in
+                self.relocate(coordinates: location)
+            }).addDisposableTo(mDisposeBag)
+        
         mViewModel.start()
     }
     
@@ -53,6 +59,11 @@ class ViewController: UIViewController {
         self.detailSheet?.place = place
         //Present detail
         addBottomSheetView(self.detailSheet!)
+    }
+    
+    func relocate(coordinates: CLLocationCoordinate2D) {
+        let viewRegion = MKCoordinateRegionMakeWithDistance(coordinates, 2500, 2500)
+        self.mapView.setRegion(viewRegion, animated: false)
     }
     
     // MARK: Place list sheet

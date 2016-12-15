@@ -26,14 +26,10 @@ class MainViewModel {
     
     // MARK: Location
     
-    private let currentLocationSubject = PublishSubject<CLLocation>()
-    func getCurrentLocationStream() -> Observable<CLLocation>{
+    private let currentLocationSubject = PublishSubject<CLLocationCoordinate2D>()
+    func getCurrentLocationStream() -> Observable<CLLocationCoordinate2D>{
         return currentLocationSubject.asObserver()
     }
-    func requestedCurrentLocation(){
-        //TODO: get user location and notify view
-    }
-    
     
     // MARK: General
     
@@ -50,6 +46,9 @@ class MainViewModel {
                 }.subscribe(onNext:{ place in
                         self.placesSubject.onNext(place)
                 }).addDisposableTo(self.mDisposeBag)
+                
+                //Notify location
+                self.currentLocationSubject.onNext(location)
         }).addDisposableTo(mDisposeBag)
         
         
