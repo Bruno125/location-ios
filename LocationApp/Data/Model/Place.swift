@@ -42,6 +42,10 @@ struct PlaceUtils{
         let name = json["name"].stringValue
         let vicinity = json["vicinity"].stringValue
         
+        if id.isEmpty || name.isEmpty {
+            return nil
+        }
+        
         let icon = json["icon"].stringValue
         let address = json["formatted_address"].stringValue.replacingOccurrences(of: ", ", with: "\n")
         let phone = json["formatted_phone_number"].stringValue

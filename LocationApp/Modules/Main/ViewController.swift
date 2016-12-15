@@ -245,6 +245,16 @@ extension ViewController : SheetDelegate{
     // MARK: SheetDelegate implementation
     func sheetDidSelect(place: Place) {
         openPlaceDetail(place)
+        //Search annotation for that place and select if
+        for annotation in mapView.annotations{
+            if let placeAnnotation = annotation as? PlaceAnnotation{
+                if placeAnnotation.place.id == place.id{
+                    self.mapView.selectAnnotation(annotation, animated: true)
+                    self.center(at: placeAnnotation.coordinate,zoom: false)
+                }
+            }
+        }
+        
     }
     
     func sheetDidCollapse(controller: SheetViewController, completely: Bool) {
