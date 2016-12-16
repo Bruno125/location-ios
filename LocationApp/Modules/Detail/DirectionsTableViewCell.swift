@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class DirectionsTableViewCell: UITableViewCell {
 
+    var location : CLLocationCoordinate2D?
+    var controller : UIViewController?
+    
     @IBOutlet var directionsButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,4 +26,10 @@ class DirectionsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    @IBAction func actionDirections(_ sender: Any) {
+        if location != nil && controller != nil{
+            LocationUtils.openDirections(to: location!, controller: controller!)
+        }
+    }
 }

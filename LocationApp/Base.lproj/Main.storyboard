@@ -320,6 +320,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="actionDirections:" destination="8WX-3F-AcD" eventType="touchUpInside" id="8pO-Rm-LtI"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-yr-Biv">
                                                     <rect key="frame" x="8" y="73" width="359" height="1"/>

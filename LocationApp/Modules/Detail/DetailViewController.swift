@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import MapKit
 
 class DetailViewController: SheetViewController {
 
@@ -129,7 +130,10 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
             tempCell.mainLabel.text = place!.website
             cell = tempCell
         case .directions:
-            cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath)
+            let tempCell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath) as! DirectionsTableViewCell
+            tempCell.controller = self
+            tempCell.location = CLLocationCoordinate2D(latitude: place!.latitude, longitude: place!.longitude)
+            cell = tempCell
         case .photos:
             let tempCell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath) as! PhotoTableViewCell
             tempCell.set(photos: place!.photoUrls)

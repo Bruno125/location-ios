@@ -70,6 +70,43 @@ class LocationUtils : NSObject, CLLocationManagerDelegate {
 
     }
     
+    static func openDirections(to destiny:CLLocationCoordinate2D, controller : UIViewController?) {
+        let options : [ (name: String, url: String) ] = [
+            ("Waze","waze://?ll=\(destiny.latitude),\(destiny.longitude)&navigate=yes"),
+            ("Google Maps","comgooglemaps://maps.google.com/maps?q=\(destiny.latitude),\(destiny.longitude)"),
+            ("Maps","maps://maps.google.com/maps?q=\(destiny.latitude),\(destiny.longitude)")
+        ]
+        
+        var availableOptions : [(name: String, url: String)] = []
+        for option in options {
+            let canOpen = UIApplication.shared.canOpenURL(URL(string: option.url)!)
+            if canOpen {
+                availableOptions.append(option)
+            }
+        }
+        //Only one option, choose it right away
+        if availableOptions.count == 1 || (controller == nil && !availableOptions.isEmpty){
+            UIApplication.shared.open(URL(string:availableOptions[0].url)!)
+            return
+        }
+        
+        if controller != nil {
+            let alert = UIAlertController(title: "Choose your navigation app", message: nil, preferredStyle: .alert)
+            
+            for option in availableOptions {
+                alert.addAction(UIAlertAction(title: option.name, style: .default, handler: { action in
+                    UIApplication.shared.open(URL(string:option.url)!)
+                }))
+            }
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            controller?.present(alert, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
 }
 
 enum LocationStatus {
