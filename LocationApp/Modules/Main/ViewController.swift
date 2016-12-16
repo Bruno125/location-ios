@@ -233,6 +233,7 @@ extension ViewController : MKMapViewDelegate{
             }, completion: nil)
             //Open place details
             openPlaceDetail(place)
+            self.listSheet?.collapse()
         }
     }
     
