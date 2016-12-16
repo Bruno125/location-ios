@@ -19,7 +19,11 @@ struct Review {
     static func parse(json: JSON) -> Review{
         let authorName = json["author_name"].stringValue
         let timeDescription = json["relative_time_description"].stringValue
-        let text = json["text"].stringValue
+        var text = json["text"].stringValue
+        
+        if text.isEmpty {
+            text = "----"
+        }
         
         let ratingArray = json["aspects"].arrayValue
         var rating = 0.0

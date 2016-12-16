@@ -18,14 +18,24 @@ class PlaceServiceRepo: PlaceRepo {
     
     private static let API_KEY = AppUtils.getApiKey()
     private static let URL_BASE = AppUtils.getBaseUrl()
-    private static let URL_NEARBY = "\(URL_BASE)/nearbysearch/json?location=%f,%f&radius=%d&key=\(API_KEY)"
+    private static let URL_NEARBY = "\(URL_BASE)/nearbysearch/json?location=%f,%f&radius=%d&types=%@&key=\(API_KEY)"
     private static let URL_DETAILS = "\(URL_BASE)/details/json?placeid=%@&key=\(API_KEY)"
     private static let URL_PHOTO = "\(URL_BASE)/photo?photoreference=%@&key=\(API_KEY)"
     
     func nearby(latitude: Double, longitude: Double, radius :Int, type: [PlaceType]) -> Observable<[Place]>{
 
         return Observable.create { observer in
-            let url = String(format:PlaceServiceRepo.URL_NEARBY,latitude,longitude,radius)
+            
+            var typesString = ""
+            for t in type{
+                if typesString.isEmpty {
+                    typesString += t.key
+                }else {
+                    typesString += "%7C\(t.key)"
+                }
+            }
+            
+            let url = String(format:PlaceServiceRepo.URL_NEARBY,latitude,longitude,radius,typesString)
             let requestReference = Alamofire.request(url).responseJSON(completionHandler: { response in
                 if let value = response.result.value {
                     //Parse response into SwiftyJSON

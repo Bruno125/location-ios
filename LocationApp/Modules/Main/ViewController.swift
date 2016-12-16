@@ -47,13 +47,7 @@ class ViewController: UIViewController {
         mViewModel.getCurrentLocationStream()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { location in
-                //Remove current annotations
-                self.removeAllAnnotation()
-                self.mPlaces = []
-                //Request places again
-                self.mViewModel.requestPlaces(for: location)
-                //Place current location annotation
-                self.relocate(coordinates: location)
+                self.requestPlacesAgain()
             }).addDisposableTo(mDisposeBag)
         
         mViewModel.requestedCurrentLocation()
@@ -63,6 +57,19 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         setupSheets()
         setupPickLocationViews()
+    }
+    
+    func requestPlacesAgain(){
+        //Remove current annotations
+        self.removeAllAnnotation()
+        self.mPlaces = []
+        //Request places again
+        self.mViewModel.requestPlaces()
+        //Place current location annotation
+        let location = mViewModel.getLocation()
+        if location != nil {
+            self.relocate(coordinates: location!)
+        }
     }
     
     func openPlaceDetail(_ place: Place){
@@ -89,6 +96,7 @@ class ViewController: UIViewController {
         self.settingsSheet = storyboard?.instantiateViewController(withIdentifier: "Settings") as? SettingsViewController
         self.mapView.alpha = 0.5
         self.optionsContainerView.isHidden = true
+        self.mapView.isUserInteractionEnabled = false
         addBottomSheetView(self.settingsSheet!)
     }
     
@@ -271,10 +279,20 @@ extension ViewController : SheetDelegate{
                 }
             }
             //Dereference setting vc
-            if controller is SettingsViewController{
-                settingsSheet = nil
+            if let settingsController = controller as? SettingsViewController{
+                settingsController.getResults()
+                    .subscribe(onNext:{ results in
+                        if results.changed {
+                            self.mViewModel.updateSetttings(radius: results.radius, filters: results.types)
+                        }
+                        self.requestPlacesAgain()
+                        self.settingsSheet = nil
+                    }).addDisposableTo(mDisposeBag)
+                
+                mapView.isUserInteractionEnabled = true
                 mapView.alpha = 1
                 self.optionsContainerView.isHidden = false
+                
             }
         }
     }

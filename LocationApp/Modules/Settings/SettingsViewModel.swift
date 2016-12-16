@@ -13,53 +13,99 @@ class SettingsViewModel {
     
     private let mSource :PlaceRepo
     private let mDisposeBag = DisposeBag()
-    private static var categories : [PlaceType] = []
+    
+    private static var categories : [PlaceType] = SettingsViewModel.defaultCategories()
+    private static var radius = AppUtils.getRadius()
+    
+    private var tempCategories : [PlaceType] = []
+    private var tempRadius = 0
+    private var changed = false
     
     init(source :PlaceRepo){
         mSource = source
-        
+    }
+    
+    private static func defaultCategories() -> [PlaceType]{
+        return [
+            PlaceTypes.Atm(),
+            PlaceTypes.Cafe(),
+            PlaceTypes.Hospital(),
+            PlaceTypes.Parking(),
+            PlaceTypes.Restaurant(),
+            PlaceTypes.TrainStation(),
+            PlaceTypes.University(),
+            PlaceTypes.Bank(),
+            PlaceTypes.Library(),
+            PlaceTypes.School(),
+            PlaceTypes.Stadium()]
     }
     
     private let categoriesSubject = PublishSubject<[PlaceType]>()
     func getCategoriesStream() -> Observable<[PlaceType]>{
-        if SettingsViewModel.categories.isEmpty {
-            SettingsViewModel.categories =  [
-                PlaceTypes.Atm(),
-                PlaceTypes.Cafe(),
-                PlaceTypes.Hospital(),
-                PlaceTypes.Parking(),
-                PlaceTypes.Restaurant(),
-                PlaceTypes.TrainStation(),
-                PlaceTypes.University(),
-                PlaceTypes.Bank(),
-                PlaceTypes.Library(),
-                PlaceTypes.School(),
-                PlaceTypes.Stadium()]
-        }
-        
         return categoriesSubject.asObservable()
     }
     
+    private let updateEnabledSubject = PublishSubject<Bool>()
+    func getUpdateEnabledStream() -> Observable<Bool> {
+        return updateEnabledSubject.asObservable()
+    }
+    
     func start(){
+        tempCategories = SettingsViewModel.defaultCategories()
+        for i in 0...tempCategories.count - 1 {
+            tempCategories[i].selected = SettingsViewModel.categories[i].selected
+        }
+        
+        tempRadius = SettingsViewModel.radius
+        
         categoriesSubject.onNext(SettingsViewModel.categories)
+        determineHasChanged()
     }
     
     func selected(index: Int){
-        SettingsViewModel.categories[index].selected = !SettingsViewModel.categories[index].selected
-        categoriesSubject.onNext(SettingsViewModel.categories)
+        tempCategories[index].selected = !tempCategories[index].selected
+        categoriesSubject.onNext(tempCategories)
+        determineHasChanged()
     }
     
-    func getResults(radius: Int ) -> Observable<(radius: Int,types: [PlaceType])>{
+    func changedRadius(value: Int){
+        tempRadius = value
+        determineHasChanged()
+    }
+    
+    func determineHasChanged(){
+        updateEnabledSubject.onNext(hasMadeChanges())
+    }
+    
+    func hasMadeChanges() -> Bool{
+        //Check if has changed categories
+        for i in 0...tempCategories.count-1{
+            if tempCategories[i].selected != SettingsViewModel.categories[i].selected {
+                return true
+            }
+        }
+        //Check if has changed radius
+        let radiusChanged = tempRadius != SettingsViewModel.radius
+        return radiusChanged
+    }
+    
+    func saveChanges(){
+        //Save changes on static variables
+        SettingsViewModel.categories = tempCategories
+        SettingsViewModel.radius = tempRadius
+        changed = true
+    }
+    
+    func getResults() -> Observable<(changed: Bool, radius: Int,types: [PlaceType])>{
+        //Create array only with selected categories
         var resultTypes = [PlaceType]()
-        for category in SettingsViewModel.categories{
+        for category in tempCategories{
             if category.selected{
                 resultTypes.append(category)
             }
         }
-        //TODO: transform radius
-        let calculatedRadius = 100
-        
-        return Observable.just((radius:calculatedRadius, types: resultTypes))
+        //Return radius and selected categories
+        return Observable.just((changed: changed, radius:tempRadius, types: resultTypes))
     }
     
 }

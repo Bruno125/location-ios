@@ -15,6 +15,10 @@ class MainViewModel {
     private let mSource :PlaceRepo
     private let mDisposeBag = DisposeBag()
     
+    private var location : CLLocationCoordinate2D?
+    private var radius = AppUtils.getRadius()
+    private var filters : [PlaceType] = []
+    
     init(source :PlaceRepo){
         mSource = source
     }
@@ -33,11 +37,15 @@ class MainViewModel {
     
     // MARK: General
     
-    func requestPlaces(for location: CLLocationCoordinate2D){
+    func requestPlaces(){
+        if location == nil {
+            return
+        }
+        
         //Request places that are near our current location
-        let request = self.mSource.nearby(latitude: location.latitude,
-                                          longitude: location.longitude,
-                                          radius: AppUtils.getRadius(), type: [])
+        let request = self.mSource.nearby(latitude: location!.latitude,
+                                          longitude: location!.longitude,
+                                          radius: radius, type: filters)
         request.flatMap { place in
             return Observable.from(place)
         }.subscribe(onNext:{ place in
@@ -49,12 +57,23 @@ class MainViewModel {
         LocationUtils.sharedInstance.getCurrentLocation()
             .subscribe(onNext:{ location in
                 //Notify location
+                self.location = location
                 self.currentLocationSubject.onNext(location)
             }).addDisposableTo(mDisposeBag)
     }
     
+    func getLocation() -> CLLocationCoordinate2D? {
+        return location
+    }
+    
     func userPicked(location: CLLocationCoordinate2D){
+        self.location = location
         currentLocationSubject.onNext(location)
+    }
+    
+    func updateSetttings(radius: Int, filters: [PlaceType]){
+        self.radius = radius
+        self.filters = filters
     }
     
 }

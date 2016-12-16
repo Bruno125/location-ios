@@ -37,6 +37,18 @@ class SettingsViewController: SheetViewController {
             self.collectionView.reloadData()
         }).addDisposableTo(mDisposeBag)
         
+        mViewModel.getUpdateEnabledStream()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext:{ enabled in
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.applyButton.isEnabled = enabled
+                    self.applyButton.alpha = enabled ? 1 : 0.2
+                    let title = enabled ? "Apply changes" : "You've made no changes"
+                    self.applyButton.setTitle(title, for: .normal)
+                })
+//                self.applyButton.backgroundColor = enabled ? UIColor.enabledColor() : UIColor.disabledColor()
+        }).addDisposableTo(mDisposeBag)
+        
         mViewModel.start()
     }
     
@@ -54,14 +66,16 @@ class SettingsViewController: SheetViewController {
     }
     
     @IBAction func actionApply(_ sender: Any) {
+        mViewModel.saveChanges()
+        collapse(completely: true)
     }
     
     @IBAction func actionClose(_ sender: Any) {
         collapse(completely: true)
     }
     
-    func getResults() -> Observable<(radius: Int,types: [PlaceType])>{
-        return mViewModel.getResults(radius: 10)
+    func getResults() -> Observable<(changed: Bool, radius: Int,types: [PlaceType])>{
+        return mViewModel.getResults()
     }
     
 }

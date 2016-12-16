@@ -409,6 +409,7 @@
 				TargetAttributes = {
 					39BDE6691DE7909300FB4C7D = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VK59D6Z27Q;
 						ProvisioningStyle = Automatic;
 					};
 					39BDE67D1DE7909400FB4C7D = {
@@ -761,6 +762,7 @@
 			baseConfigurationReference = 1FB2021935A652E73255A41C /* Pods-LocationApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VK59D6Z27Q;
 				INFOPLIST_FILE = LocationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunoaybar.LocationApp;
@@ -774,6 +776,7 @@
 			baseConfigurationReference = CFBF54E8179094F22A8DCD6D /* Pods-LocationApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VK59D6Z27Q;
 				INFOPLIST_FILE = LocationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunoaybar.LocationApp;
