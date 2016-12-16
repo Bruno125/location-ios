@@ -38,7 +38,7 @@ The data can be access by two different ways:
   - [Place photos](https://developers.google.com/places/web-service/photos): to display photos from a place
   - [Distance matrix](https://developers.google.com/maps/documentation/distance-matrix/intro): to get the distance in kms and time from current location to a specific place
 
-- __JSON files__: that fetch the same information as the web service source, but obtain it's info from local json files. This is managed in [`QuestionnaireFileSource`](LocationApp/Data/Source/PlaceFileSource.swift)
+- __JSON files__: that fetch the same information as the web service source, but obtain it's info from local json files. This is managed in [`PlaceFileSource`](LocationApp/Data/Source/PlaceFileSource.swift)
 
 ## App Features
 
