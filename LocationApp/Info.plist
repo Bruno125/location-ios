@@ -49,7 +49,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>Base URL</key>
-	<string>https://maps.googleapis.com/maps/api/place</string>
+	<string>https://maps.googleapis.com/maps/api</string>
 	<key>Google Api Key</key>
 	<string>AIzaSyCp4LkuOqscEIwcVWFMgtt7p2J9Lq_J0rs</string>
 </dict>

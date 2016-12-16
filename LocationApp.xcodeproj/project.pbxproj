@@ -57,6 +57,8 @@
 		392948ED1E01795E00D968E6 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948EB1E01795E00D968E6 /* SheetViewController.swift */; };
 		392948EF1E01950C00D968E6 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948EE1E01950C00D968E6 /* CustomAnnotationView.swift */; };
 		392948F01E01950C00D968E6 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392948EE1E01950C00D968E6 /* CustomAnnotationView.swift */; };
+		396001F41E03FEDE00426EBD /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396001F31E03FEDE00426EBD /* Distance.swift */; };
+		396001F51E03FEDE00426EBD /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396001F31E03FEDE00426EBD /* Distance.swift */; };
 		39BDE66E1DE7909300FB4C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */; };
 		39BDE6731DE7909300FB4C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6711DE7909300FB4C7D /* Main.storyboard */; };
 		39BDE6751DE7909300FB4C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BDE6741DE7909300FB4C7D /* Assets.xcassets */; };
@@ -121,6 +123,7 @@
 		392948E81E0178CE00D968E6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Modules/Detail/DetailViewController.swift; sourceTree = "<group>"; };
 		392948EB1E01795E00D968E6 /* SheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SheetViewController.swift; path = Utils/SheetViewController.swift; sourceTree = "<group>"; };
 		392948EE1E01950C00D968E6 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAnnotationView.swift; path = Modules/Main/CustomAnnotationView.swift; sourceTree = "<group>"; };
+		396001F31E03FEDE00426EBD /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Data/Model/Distance.swift; sourceTree = "<group>"; };
 		39BDE66A1DE7909300FB4C7D /* LocationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BDE66D1DE7909300FB4C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39BDE6721DE7909300FB4C7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -307,6 +310,7 @@
 				39C30F131DEB89F700B518C8 /* Place.swift */,
 				39C30F1D1DEB8B0E00B518C8 /* PlaceTypes.swift */,
 				39018B741E01CA3300AE37AC /* Review.swift */,
+				396001F31E03FEDE00426EBD /* Distance.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -578,6 +582,7 @@
 				392948CB1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39018B721E01AF3200AE37AC /* DetailViewModel.swift in Sources */,
 				39C30F211DEB8C6700B518C8 /* PlaceServiceRepo.swift in Sources */,
+				396001F41E03FEDE00426EBD /* Distance.swift in Sources */,
 				39018B881E030D8200AE37AC /* CategoryCollectionViewCell.swift in Sources */,
 				392948EF1E01950C00D968E6 /* CustomAnnotationView.swift in Sources */,
 				39C30F241DEB8CCD00B518C8 /* PlaceFileSource.swift in Sources */,
@@ -615,6 +620,7 @@
 				392948CC1DFF16D600D968E6 /* MainViewModel.swift in Sources */,
 				39018B731E01AF3200AE37AC /* DetailViewModel.swift in Sources */,
 				39C30F1F1DEB8B0E00B518C8 /* PlaceTypes.swift in Sources */,
+				396001F51E03FEDE00426EBD /* Distance.swift in Sources */,
 				39018B891E030D8200AE37AC /* CategoryCollectionViewCell.swift in Sources */,
 				392948F01E01950C00D968E6 /* CustomAnnotationView.swift in Sources */,
 				39C30F151DEB89F700B518C8 /* Place.swift in Sources */,

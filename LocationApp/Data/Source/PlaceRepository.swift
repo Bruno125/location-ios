@@ -13,12 +13,11 @@ class PlaceRepository: PlaceRepo {
 
     static let sharedInstance = PlaceRepository()
     
-    
     func nearby(latitude: Double, longitude: Double, radius :Int, type: [PlaceType]) -> Observable<[Place]>{
         return PlaceServiceRepo.sharedInstance.nearby(latitude: latitude, longitude: longitude, radius: radius, type: type)
     }
     
-    func getDetails(placeId: String) -> Observable<Place> {
+    func getDetails(placeId :String) -> Observable<Place> {
         return PlaceServiceRepo.sharedInstance.getDetails(placeId: placeId)
     }
     
@@ -26,4 +25,7 @@ class PlaceRepository: PlaceRepo {
         return PlaceServiceRepo.sharedInstance.getPhotos(referenceNumber: referenceNumber)
     }
     
+    func getDistances(from:[(latitude:Double,longitude:Double)], to:[(latitude:Double,longitude:Double)]) -> Observable<[Distance]>{
+        return PlaceServiceRepo.sharedInstance.getDistances(from: from, to: to)
+    }
 }

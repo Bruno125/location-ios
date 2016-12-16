@@ -22,7 +22,7 @@ struct Place {
     let internationalPhone :String
     let website: String
     let rating :Double
-    var distance :Double
+    var distance :String
     
     var photoReferences = [String]()
     var photoUrls = [String]()
@@ -52,7 +52,7 @@ struct PlaceUtils{
         let internationalPhone = json["international_phone_number"].stringValue
         let website = json["website"].stringValue
         let rating = json["rating"].doubleValue
-        let distance = 0.0
+        let distance = ""
         
         let location = json["geometry"]["location"]
         let latitude = location["lat"].doubleValue

@@ -13,7 +13,8 @@ import MapKit
 class DetailViewController: SheetViewController {
 
     var place : Place?
-    let mViewModel = DetailViewModel(source: Injection.getSource())
+    var location : CLLocationCoordinate2D?
+    var mViewModel : DetailViewModel?
     let mDisposeBag = DisposeBag()
     var requestedDetails = false
     var cellTypes = [(type:DetailCellTypes,index:Int)]()
@@ -30,6 +31,9 @@ class DetailViewController: SheetViewController {
             dismiss(animated: false, completion: nil)
             return
         }
+        
+        mViewModel = DetailViewModel(source: Injection.getSource(), location:location)
+        
         //Setup place
         setupPlace()
         
@@ -45,7 +49,7 @@ class DetailViewController: SheetViewController {
         //Set name
         nameLabel.text = place?.name
         //Request event details
-        mViewModel.getDetailsOnce(place: place!)
+        mViewModel?.getDetailsOnce(place: place!)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { place in
                 self.place = place
@@ -133,6 +137,14 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
             let tempCell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath) as! DirectionsTableViewCell
             tempCell.controller = self
             tempCell.location = CLLocationCoordinate2D(latitude: place!.latitude, longitude: place!.longitude)
+            if !place!.distance.isEmpty {
+                let newTitle = "\(tempCell.directionsButton.title(for: .normal)!)\n(\(place!.distance))"
+                tempCell.directionsButton.titleLabel?.lineBreakMode = .byWordWrapping
+                tempCell.directionsButton.titleLabel?.textAlignment = .center
+                tempCell.directionsButton.setTitle(newTitle, for: .normal)
+            }
+            
+            
             cell = tempCell
         case .photos:
             let tempCell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath) as! PhotoTableViewCell

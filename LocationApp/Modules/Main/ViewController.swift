@@ -79,8 +79,9 @@ class ViewController: UIViewController {
         
         //Init view controller
         self.detailSheet = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController
-        //Assign place
+        //Assign place and location
         self.detailSheet?.place = place
+        self.detailSheet?.location = mViewModel.getLocation()
         //Present detail
         addBottomSheetView(self.detailSheet!)
     }

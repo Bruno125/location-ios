@@ -33,7 +33,7 @@ class PlaceFileSource: PlaceRepo {
         }
     }
     
-    func getDetails(placeId: String) -> Observable<Place> {
+    func getDetails(placeId :String) -> Observable<Place> {
         
         return Observable.create{ observer in
             do{
@@ -55,6 +55,10 @@ class PlaceFileSource: PlaceRepo {
         return Observable.just([])
     }
     
+    func getDistances(from:[(latitude:Double,longitude:Double)], to:[(latitude:Double,longitude:Double)]) -> Observable<[Distance]>{
+        return Observable.just([])
+    }
+    
     private func readJsonFile(file: String) throws -> JSON{
         if let path = Bundle.main.path(forResource: file, ofType:"json"){
             do{
@@ -67,6 +71,8 @@ class PlaceFileSource: PlaceRepo {
             throw ReadFileError.invalidFile
         }
     }
+    
+    
 }
 
 
