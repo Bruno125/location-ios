@@ -32,7 +32,7 @@ struct Place {
 
 
 struct PlaceUtils{
-    
+        
     static func parseList(from json: JSON) -> [Place]{
         return json.arrayValue.flatMap{ PlaceUtils.parseDetail(from: $0)}
     }

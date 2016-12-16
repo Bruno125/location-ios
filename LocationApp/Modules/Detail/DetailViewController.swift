@@ -138,7 +138,7 @@ extension DetailViewController : UITableViewDataSource,UITableViewDelegate{
             tempCell.controller = self
             tempCell.location = CLLocationCoordinate2D(latitude: place!.latitude, longitude: place!.longitude)
             if !place!.distance.isEmpty {
-                let newTitle = "\(tempCell.directionsButton.title(for: .normal)!)\n(\(place!.distance))"
+                let newTitle = "Get me here\n(\(place!.distance))"
                 tempCell.directionsButton.titleLabel?.lineBreakMode = .byWordWrapping
                 tempCell.directionsButton.titleLabel?.textAlignment = .center
                 tempCell.directionsButton.setTitle(newTitle, for: .normal)
